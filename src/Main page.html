@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>OpenFin App</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="main-page.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+      <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zingchart-angularjs/1.2.0/zingchart-angularjs.min.js"></script>
+  <script src ="js/MainPageController.js"></script>
+
+  </head>
+  <body>
+
+      <div class="header">
+		    <span class="glyphicon glyphicon-remove-circle close"></span>
+	  </div>
+    <button class="btn btn-warning" onclick="createDeepLink()">Copy Deep Link</button>
+    <input class="btn btn-primary logout-button" type="submit" name="submit" class="submit upload-button" onclick="location.href='Login Form.html';" value="LOGOUT" />
+
+    <!--Chart Placement[2]-->
+  <!-- <div id="chartDiv"></div>
+  <script>
+    var chartData = {
+      type: 'line',  // Specify your chart type here.
+      title: {
+        text: 'My First Chart' // Adds a title to your chart
+      },
+      legend: {}, // Creates an interactive legend
+      series: [  // Insert your series data here.
+          { values: [35, 42, 67, 89]},
+          { values: [28, 40, 39, 36]}
+      ]
+    };
+    zingchart.render({ // Render Method[3]
+      id: 'chartDiv',
+      data: chartData,
+      height: 400,
+      width: 600
+    });
+  </script> -->
+
+    <div class="container" ng-app="formvalid">
+      <div ng-controller="MainController" >
+      <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="568px"  ng-show ="isChartVisible"></div>
+    </div>
+      <div class="panel" data-ng-controller="validationCtrl">
+          <div class="panel-body">
+          <table class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Name</th>
+              <th>Symbol</th>
+              <th>ISIN</th>
+              <th>Stock</th>
+              <th>Quantity</th>
+              <th>Price</th>
+              <th>Amount</th>
+              <th></th>
+            </tr>
+          </thead>
+            <tbody>
+                <tr ng-repeat="n in data">
+                <td style="text-align: right"><input type="checkbox" ng-change="chartShowHide()"  ng-model="showChart" ng-checked="false"></input></td>
+                <td>{{n.name}}</td>
+                <td><button class="btn btn-link" ng-click="openStockDetails(n.query)">{{n.symbol}}</a></td>
+                <td>{{n.isin}}</td>
+                <td>{{n.stock}}</td>
+                <td style="text-align: right">{{n.quantity}}</td>
+                <td style="text-align: right">{{n.price}}</td>
+                <td style="text-align: right">${{n.amount}}</td>
+                <td><button type="button" onclick="handleEditBtnClick()" class="btn btn-warning openWindowBtn">Edit Row</button></td>
+              </tr>
+            </tbody>
+        </table>
+      </div>
+    </div>
+    </div>
+
+    <!-- <div class="dataTable-div">
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+
+     </table>
+   </div> -->
+
+<script src="./js/newWindow.js"></script>
+<script src="./js/DeepLink.js"></script>
+
+<!-- <script type="text/javascript">
+     var menuDisplayed = false;
+     var menuBox = null;
+
+     window.addEventListener("contextmenu", function() {
+     var left = arguments[0].clientX;
+     var top = arguments[0].clientY;
+
+     menuBox = window.document.querySelector(".menu");
+     menuBox.style.left = left + "px";
+     menuBox.style.top = top + "px";
+     menuBox.style.display = "block";
+
+     arguments[0].preventDefault();
+
+     menuDisplayed = true;
+ }, false);
+
+ window.addEventListener("click", function() {
+     if(menuDisplayed == true){
+         menuBox.style.display = "none";
+     }
+ }, true);
+ </script> -->
+
+
+ <!-- <script type="text/javascript">
+ $(document).ready(function() {
+  $('#example')
+  // .on( 'page.dt',   function () { addEventToEditBtn(); } )
+  .DataTable();
+} );
+ </script> -->
+
+
+ <script type="text/javascript">
+ fin.desktop.main(init);
+
+function init(){
+var finWindow = fin.desktop.Window.getCurrent();
+finWindow.updateOptions({frame: false});
+var close = document.querySelector('.close');
+
+close.addEventListener('click', function(){
+fin.desktop.Window.getCurrent().close();
+})
+}
+
+// Deep Linking
+function createDeepLink() {
+  var redirect = './Main page.html';
+  generateLink(redirect);
+}
+
+ </script>
+
+</script>
+  </body>
+
+</html>

@@ -1,0 +1,21 @@
+{
+  "devtools_port": 9090,
+  "startup_app": {
+    "name": "OpenFin First App",
+    "description": "My first OpenFin app",
+    "url": "http://localhost:9070",
+    "uuid": "openfin-closing-events-demo",
+    "autoShow": true,
+	"frame": false,
+	"maximizable": false
+  },
+  "runtime": {
+    "arguments": "",
+    "version": "stable"
+  },
+  "shortcut": {
+    "company": "OpenFin",
+    "description": "OpenFin appseed",
+    "name": "OpenFin appseed"
+  }
+}

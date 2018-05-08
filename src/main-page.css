@@ -1,0 +1,76 @@
+* {margin: 0; padding: 0;}
+
+.close {
+  -webkit-app-region: no-drag;
+  display: block;
+  cursor: pointer;
+  float: right;
+  font-size: 25px;
+  opacity: 0.5;
+}
+.close:hover{
+opacity: 1;
+}
+
+.menu
+{
+    width: 150px;
+    box-shadow: 3px 3px 5px #888888;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    border-radius: 2px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    position: fixed;
+    display: none;
+    background-color: lightgray;
+
+}
+
+.menu-item
+{
+    height: 20px;
+}
+
+.menu-item:hover
+{
+    background-color: #6CB5FF;
+    cursor: pointer;
+}
+
+.logout-button{
+  float: right;
+  width: 10em;
+  margin: 0px 20px 5px 0px;
+}
+
+.header{
+  margin: 5px 20px 10px 0px;
+  padding: 0px 0px 20px 0px;
+
+}
+
+.form-control form-control-sm{
+  margin: 20px 0px 0px 0px;
+}
+
+.dataTable-div{
+width: 100%;
+  float: left;
+}
+
+
+table tr th{
+  background:#337ab7;
+  color:white;
+  text-align:left;
+  vertical-align:center;
+}
+
+.panel-body{
+  float: left;
+  width: 100%;
+}

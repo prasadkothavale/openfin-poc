@@ -1,0 +1,215 @@
+@import url(http://fonts.googleapis.com/css?family=Montserrat);
+
+* {margin: 0; padding: 0;}
+
+/* body{
+	background: #20222B;
+} */
+.main-content{
+	width: 100%;
+	height: 100%;
+}
+.header{
+  margin: 5px 20px 10px 0px;
+  padding: 0px 0px 20px 0px;
+}
+
+.close {
+-webkit-app-region: no-drag;
+display: block;
+cursor: pointer;
+float: right;
+font-size: 25px;
+opacity: 0.5;
+}
+.close:hover{
+opacity: 1;
+}
+
+		.signup-heading{
+			font: 500 18px/1 'Open Sans', sans-serif;
+			font-size: 25px;
+			color: black;
+			margin-top: 40px;
+			margin-bottom: 10px;
+			text-align: center;
+		}
+#msform {
+	width: 100%;
+	margin: 30px auto;
+	text-align: center;
+	position: relative;
+}
+
+/* #msform fieldset {
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 10px 10px;
+
+	box-sizing: border-box;
+	width: 80%;
+	margin: 20px 10%;
+
+	/*stacking fieldsets above each other
+	position:relative;
+} */
+.disabled{
+  opacity: 0.5;
+  pointer-events: none;
+
+  > * {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+#first{
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 0px 10px;
+	width: 32%;
+	/* margin: 0px 10px 0px 10px; */
+	position: relative;
+  /*-webkit-margin-start: 33em;*/
+}
+#second{
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 10px 10px;
+	width: 32%;
+	margin: 0px 10px 0px 10px;
+}
+#third{
+	background: white;
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	padding: 10px 10px;
+	width: 32%;
+	margin: 0px 10px 0px 0px;
+}
+
+/* background: white;
+border: 0 none;
+border-radius: 3px;
+box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+padding: 10px 10px;
+width: 30%;
+margin: 0px 10px 0px 10px; */
+
+#msform input, #msform textarea {
+	padding: 15px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 10px;
+	width: 80%;
+	box-sizing: border-box;
+	font-family: montserrat;
+	color: #2C3E50;
+	font-size: 13px;
+}
+#msform input:focus, #msform textarea:focus{
+	color: #2C3E50;
+	border: 1px solid #27AE60;
+}
+#msform input[type="radio"] {
+  cursor: pointer;
+  height: 26px;
+  opacity: 0.5;
+  position: relative;
+  width: 24px;
+  margin-left: 100px;
+  margin-top: 10px;
+  float: left;
+}
+#msform input[type="radio"]:checked {
+  left: 0px;
+  width: 24px;
+}
+
+#msform input[type="radio"]:checked + .toggle { background-position: 0 -16px }
+
+#radio-txt{
+	float: left;
+  margin: 10px 0 0 10px;
+  font: 600 15px/1 'Open Sans', sans-serif;
+  color: #727678;
+}
+
+#msform select{
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	margin-bottom: 20px;
+	width: 80%;
+	box-sizing: border-box;
+	color: #2C3E50;
+  opacity: 1;
+	font-size: 14px;
+  text-align: left;
+  font-family: sans-serif;
+}
+#msform select option{
+  text-align: center;
+  padding: 10px;
+  color: #2C3E50;
+  opacity: 0.7;
+
+}
+
+
+
+
+#msform .action-button {
+	width: 200px;
+	background: #27AE60;
+	font-weight: 300;
+	color: white;
+	border: 0 none;
+	border-radius: 2px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .action-button:hover, #msform .action-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #27AE60;
+}
+
+#msform .upload-button{
+  width: 200px;
+  background: #3F3FBF;
+  font-weight: 300;
+	color: white;
+	border: 0 none;
+	border-radius: 2px;
+	cursor: pointer;
+	padding: 10px 5px;
+	margin: 10px 5px;
+}
+
+#msform .upload-button:hover, #msform .upload-button:focus {
+	box-shadow: 0 0 0 2px white, 0 0 0 3px #3F3FBF;
+}
+
+
+
+
+.fs-title {
+	font-size: 15px;
+	text-transform: uppercase;
+	color: #2C3E50;
+	margin-bottom: 10px;
+}
+
+.fs-subtitle {
+	font-weight: normal;
+	font-size: 13px;
+	color: #666;
+	margin-bottom: 20px;
+}
