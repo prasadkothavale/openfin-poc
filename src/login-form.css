@@ -38,6 +38,23 @@ body { background-color: #20222B; }
 		color: white;
 		opacity: 1;
 	}
+	.closeModal {
+	-webkit-app-region: no-drag;
+	display: block;
+	cursor: pointer;
+	float: right;
+	font-size: 25px;
+	/* font-weight: 1000; */
+	/* line-height: 1; */
+	color: white;
+	text-shadow: 0 1px 0 #fff;
+	filter: alpha(opacity=20);
+	opacity: 0.7;
+}
+.closeModal:hover{
+	color: white;
+	opacity: 1;
+}
 
 .login {
   background: #eceeee;
@@ -80,6 +97,64 @@ body { background-color: #20222B; }
 }
 
 .login h6{
+  float: left;
+  margin: 10px 0 0 10px;
+  font: 600 15px/1 'Open Sans', sans-serif;
+    color: #727678;
+}
+
+.loginModal h6{
+  float: left;
+  margin: 10px 0 0 10px;
+  font: 600 15px/1 'Open Sans', sans-serif;
+    color: #727678;
+}
+
+.modal.in .modal-dialog {
+	margin-top:100px!important;
+}
+
+.loginModal {
+  background: #eceeee;
+  border: 1px solid #42464b;
+  border-radius: 6px;
+  height: 400px;
+  margin: 0px auto 0;
+  width: 400px;
+}
+.loginModal h1 {
+  background-image: linear-gradient(top, #f1f3f3, #d4dae0);
+  border-bottom: 1px solid #a6abaf;
+  border-radius: 6px 6px 0 0;
+  box-sizing: border-box;
+  color: #727678;
+  display: block;
+  height: 43px;
+  font: 600 20px/1 'Open Sans', sans-serif;
+  padding-top: 14px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
+}
+
+.loginModal h3{
+
+  background-image: linear-gradient(top, #f1f3f3, #d4dae0);
+  border-bottom: 1px solid #a6abaf;
+  border-radius: 6px 6px 0 0;
+  box-sizing: border-box;
+  color: #727678;
+  display: block;
+  height: 43px;
+  font: 600 15px/1 'Open Sans', sans-serif;
+  padding-top: 14px;
+  margin: 0;
+  text-align: center;
+  text-shadow: 0 -1px 0 rgba(0,0,0,0.2), 0 1px 0 #fff;
+
+}
+
+.loginModal h6{
   float: left;
   margin: 10px 0 0 10px;
   font: 600 15px/1 'Open Sans', sans-serif;
@@ -162,13 +237,13 @@ input[type="submit"] {
   position:relative;
   cursor:pointer;
   border: none;
-  background-color: #37a69b;
+  background-color: #faa123;
   background-image: linear-gradient(top,#3db0a6,#3111);
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius:5px;
-  box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #497a78, 0px 10px 5px #999;
+  box-shadow: inset 0px 1px 0px #faa124, 0px 5px 0px 0px #faa123, 0px 10px 5px #999;
 }
 
 .shadow {

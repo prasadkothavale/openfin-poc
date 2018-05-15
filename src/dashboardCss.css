@@ -1,0 +1,365 @@
+.container-fluid{
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  /* background-color: #28282d; */
+}
+
+.container{
+  /* border: 1px solid red; */
+  height: 100%;
+}
+
+.notification-section{
+  /* border: 1px solid red; */
+  height: 100%;
+  margin: -10px -10px 0px 0px;
+}
+
+.data-container-div{
+  /* border: 1px solid blue; */
+  height: 100%;
+}
+
+.notification{
+  /* border: 1px solid green; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 0px 0px 10px 0px;
+  height: 150%;
+}
+.picture{
+  margin-bottom: -10px;
+}
+.dp{
+  /* border: 1px solid white; */
+  border-radius: 50%;
+  height: 7.5em;
+  margin: 10px 0px 0px 0px;
+}
+#employee{height: 80%;
+    width: 110%;
+    margin-left: -15px;
+    border-radius: 50%;
+  }
+
+
+  .natificationURL{
+    /* border:1px solid red; */
+    height: 100px;
+  }
+
+  .natificationURL ul{
+    list-style-type: none;
+  }
+  .natificationURL ul li {
+    text-decoration: none;
+    padding: 10px 0px 0px 0px;
+  }
+
+  .notificationGlyphicons{
+    /* border:1px solid red; */
+    height:100px;
+  }
+  .notificationGlyphicons ul{
+    list-style-type: none;
+  }
+  .notificationGlyphicons ul li{
+    padding: 10px 0px 0px 40px;
+  }
+
+  .notify-container {
+  position: relative;
+	display: inline-block;
+  margin-top: 10px;
+}
+
+  .notify-bubble {
+    position: absolute;
+    top: -8px;
+    right: -7px;
+    padding: 2px 5px 2px 6px;
+    background-color: green;
+    color: white;
+    font-size: 0.65em;
+    border-radius: 50%;
+    box-shadow: 1px 1px 1px gray;
+    display: none;
+  }
+
+
+.newsfeed{
+  /* border: 1px solid grey; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 0px 0px 10px 0px;
+  height: 400px;
+}
+#myCarousel{
+  margin: 10px 0px 10px 0px;
+  height: 90%;
+}
+.carousel-inner ul{
+  padding: 20px 10px 0px 20px;
+}
+.carousel-inner li{
+  padding: 0px 0px 20px 0px;
+}
+.left span{
+  opacity: 0.5;
+
+}
+#Arrow{
+  margin-top:50px;
+}
+.right span{
+  opacity: 0.5;
+}
+
+.carousel-indicators li{
+  border:1px solid #777777 !important;
+}
+.carousel-indicators li.active{
+  background-color: #777777;
+}
+
+.theme-settings{
+  /* border: 1px solid royalblue; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 0px 0px 0px 0px;
+  height: 100%;
+}
+
+.settings_label{
+  text-align: -webkit-left;
+  margin: 0px 0px 0px 5px;
+}
+
+.settings_glyphicon{
+  text-align: -webkit-right;
+  font-size: 1.2em;
+  margin: 10px 0px 0px -10px;
+}
+
+.stock-watch{
+  /* border: 1px solid black; */
+  /* background: white; */
+	border: 0 none;
+  width: 100%;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  margin: -10px 0px 0px -10px;
+
+}
+
+.chart-section{
+  /* border: 1px solid orange; */
+  height: 100%;
+  margin-bottom: 20px;
+}
+
+.line-chart{
+  /* border: 1px solid red; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+  margin: 10px 0px 10px 10px;
+  height: 100%;
+}
+#lineChartdiv {
+	width	: 110%;
+	height	: 250px;
+  margin-left: 0px;
+}
+#lineChartdiv svg text{
+  fill:#777777;
+}
+/* #lineChartdiv svg g path{
+  stroke:#777777;
+} */
+
+.bar-chart{
+  /* border: 1px solid black; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 10px 0px 0px -10px;
+  height: 100%;
+}
+#chart-1-top{
+  margin-top: -10px;
+}
+#chart-1-top svg{
+  margin-top: -10px;
+  height: 280px;
+  width:399px;
+}
+
+
+.pie-chart{
+  /* border: 1px solid green; */
+  /* background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 0px 0px 0px -10px;
+  /* height: 254px; */
+}
+#container svg > rect{
+  fill:transparent;
+}
+
+#container svg g.highcharts-legend text{
+color: #777777 !important;
+fill:#777777 !important;
+}
+.highcharts-credits , .amcharts-chart-div a{
+  display: none !important;
+}
+.highcharts-contextbutton{
+  display: none !important;
+}
+/* #pieChartdiv {
+  width: 100%;
+  height: 250px;
+
+} */
+
+.worldmap{
+  /* border: 1px solid yellow;
+  background: white; */
+	border: 0 none;
+	border-radius: 3px;
+	box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+	margin: 0px 0px 0px 10px;
+  height: 100%;
+}
+
+/* #worldMap{
+  width: 100%;
+  height: 100%;
+} */
+
+#chartdiv {
+  width: 100%;
+  height: 250px;
+}
+
+
+/* new mapp css */
+
+.map-marker {
+    /* adjusting for the marker dimensions
+    so that it is centered on coordinates */
+    margin-left: -8px;
+    margin-top: -8px;
+}
+.map-marker.map-clickable {
+    cursor: pointer;
+}
+.pulse {
+    width: 10px;
+    height: 10px;
+    border: 5px solid #faa123;
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    border-radius: 30px;
+    background-color: #faa123;
+    z-index: 10;
+    position: absolute;
+    /* #716f42 */
+  }
+.map-marker .dot {
+    border: 10px solid #faa123;
+    background: transparent;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px;
+    height: 50px;
+    width: 50px;
+    -webkit-animation: pulse 3s ease-out;
+    -moz-animation: pulse 3s ease-out;
+    animation: pulse 3s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    z-index: 1;
+    opacity: 0;
+  }
+  /* @-moz-keyframes pulse {
+   0% {
+      -moz-transform: scale(0);
+      opacity: 0.0;
+   }
+   25% {
+      -moz-transform: scale(0);
+      opacity: 0.1;
+   }
+   50% {
+      -moz-transform: scale(0.1);
+      opacity: 0.3;
+   }
+   75% {
+      -moz-transform: scale(0.5);
+      opacity: 0.5;
+   }
+   100% {
+      -moz-transform: scale(1);
+      opacity: 0.0;
+   }
+  }
+  @-webkit-keyframes "pulse" {
+   0% {
+      -webkit-transform: scale(0);
+      opacity: 0.0;
+   }
+   25% {
+      -webkit-transform: scale(0);
+      opacity: 0.1;
+   }
+   50% {
+      -webkit-transform: scale(0.1);
+      opacity: 0.3;
+   }
+   75% {
+      -webkit-transform: scale(0.5);
+      opacity: 0.5;
+   }
+   100% {
+      -webkit-transform: scale(1);
+      opacity: 0.0;
+   }
+  } */
+  #chartdiv svg g path{
+    fill:#9fc6ec  !important;
+  }
+
+
+
+
+
+
+
+/* .weatherwidget-io{
+  display: block;
+      position: relative;
+      height: 115px;
+      padding: 0px;
+      overflow: hidden;
+      text-align: left;
+      width: 150%;
+      text-indent: -299rem;
+      width: 130px;
+    } */

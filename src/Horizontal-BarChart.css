@@ -1,0 +1,18 @@
+.axis text {
+  font: 10px sans-serif;
+  fill:#777777;
+}
+.axis line,
+.axis path {
+  fill: none;
+  stroke: #777777;
+  shape-rendering: crispEdges;
+}
+.path-line {
+  fill: none;
+  stroke: yellow;
+  stroke-width: 1.5px;
+}
+/* svg {
+  background: #f0f0f0;
+} */

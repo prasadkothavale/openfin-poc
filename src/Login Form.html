@@ -12,7 +12,8 @@
       // DeepLink redirect
       var search = window.location.search;
       if(search != undefined && search != null && search != "" && search.search("=") > 0) {
-          window.location = search.split("=")[1];
+           // alert(search.substring(search.indexOf('=')+1));
+           window.location = search.substring(search.indexOf('=')+1);
       }
     </script>
   </head>

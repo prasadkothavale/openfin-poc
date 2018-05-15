@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 // servers main page
 
 app.get('/', function (req, res){
-  res.sendFile("src/Login Form.html",{"root": __dirname});
+  res.sendFile("src/Main page.html",{"root": __dirname});
 });
 
 app.listen(PORT, () => console.log(`Listening on ${PORT}`))

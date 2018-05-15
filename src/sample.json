@@ -1,302 +1,256 @@
 [
+
     {
-        "name": "Tiger Nixon",
+        "name":"PayPal Holdings Inc",
+        "symbol": "PYPL",
+        "isin": "US70450Y1038",
+
+
+        "price": 74.67,
+
+        "query": "NASDAQ:+PYPL"
+    },
+	{
+        "name":"Marriott International Inc",
+        "symbol": "MAR",
+        "isin": "US5719032022",
+
+
+        "price": 136.64,
+
+        "query": "NASDAQ:+MAR"
+    },
+    {
+        "name":"Citrix Systems Inc",
+        "symbol": "CTXS",
+        "isin": "US1773761002",
+
+
+        "price": 106.58,
+
+        "query": "NASDAQ:+CTXS"
+    },
+	{
+        "name":"Accenture Plc",
+        "symbol": "ACN",
+        "isin": "IE00B4BNMY34",
+
+
+        "price": 153.44,
+
+        "query": "NASDAQ:+ACN"
+    },
+
+{
+        "name":"Microsoft Corporation",
         "symbol": "MSFT",
         "isin": "US5949181045",
-        "stock": "Microsoft Corp.",
-        "quantity": 76,
+
+
         "price": 95.16,
-        "amount": 7232.16,
+
         "query": "NASDAQ:+MSFT"
     },
     {
-        "name": "Tiger Nixon",
+        "name":"Aplhabet Inc",
         "symbol": "GOOG",
         "isin": "US02079K3059",
-        "stock": "Google",
-        "quantity": 16,
+
+
         "price": 1048.21,
-        "amount": 16771.36,
+
         "query": "NASDAQ:+GOOG"
     },
     {
-        "name": "Garrett Winters",
+        "name":"Facebook Inc",
         "symbol": "FB",
         "isin": "US30303M1027",
-        "stock": "Facebook Inc",
-        "quantity": 11,
+
+
         "price": 176.61,
-        "amount": 1942.71,
+
         "query": "NASDAQ:+FB"
     },
     {
-        "name": "Ashton Cox",
+        "name":"Intel Corporation",
         "symbol": "INTL",
         "isin": "US4581401001",
-        "stock": "Intel Corporation",
-        "quantity": 63,
-        "price": 52.78,
-        "amount": 3325.14,
-        "query": "NASDAQ:+INTC"
+
+
+        "price": 58.21,
+
+        "query": "NASDAQ:+INTL"
     },
+
     {
-        "name": "Airi Satou",
-        "symbol": "ACN",
-        "isin": "IE00B4BNMY34",
-        "stock": "Accenture",
-        "quantity": 20,
-        "price": 153.44,
-        "amount": 3068.8,
-        "query": "NYSE:+ACN"
-    },
-    {
-        "name": "Airi Satou",
+        "name":"AT&T Inc",
         "symbol": "T",
         "isin": "US00206R1023",
-        "stock": "AT&T Inc",
-        "quantity": 60,
+
+
         "price": 32.14,
-        "amount": 1928.4,
-        "query": "NYSE:+T"
+
+        "query": "NASDAQ:+T"
     },
     {
-        "name": "Airi Satou",
-        "symbol": "GOOG",
-        "isin": "US02079K3059",
-        "stock": "Google",
-        "quantity": 29,
-        "price": 1048.21,
-        "amount": 30398.09,
-        "query": "NASDAQ:+GOOG"
-    },
-    {
-        "name": "Brielle Williamson",
+        "name":"Apple Inc",
         "symbol": "AAPL",
         "isin": "US0378331005",
-        "stock": "Apple Inc",
-        "quantity": 28,
+
+
         "price": 183.83,
-        "amount": 5147.24,
+
         "query": "NASDAQ:+AAPL"
     },
     {
-        "name": "Rhona Davidson",
-        "symbol": "AAPL",
-        "isin": "US0378331005",
-        "stock": "Apple Inc",
-        "quantity": 25,
-        "price": 183.83,
-        "amount": 4595.75,
-        "query": "NASDAQ:+AAPL"
+        "name":"Adobe Systems Inc",
+        "symbol": "ADBE",
+        "isin": "US00724F1012",
+
+
+        "price": 230.99,
+
+        "query": "NASDAQ:+ADBE"
     },
     {
-        "name": "Colleen Hurst",
-        "symbol": "GOOG",
-        "isin": "US02079K3059",
-        "stock": "Google",
-        "quantity": 12,
-        "price": 1048.21,
-        "amount": 12578.52,
-        "query": "NASDAQ:+GOOG"
+        "name":"Amazon.com Inc",
+        "symbol": "AMZN",
+        "isin": "US0231351067",
+
+
+        "price": 1600.14,
+
+        "query": "NASDAQ:+AMZN"
     },
     {
-        "name": "Colleen Hurst",
-        "symbol": "INTL",
-        "isin": "US4581401001",
-        "stock": "Intel Corporation",
-        "quantity": 13,
-        "price": 52.78,
-        "amount": 686.14,
-        "query": "NASDAQ:+INTC"
+        "name":"Cisco Systems Inc",
+        "symbol": "CSCO",
+        "isin": "US17275R1023",
+
+
+        "price": 45.73,
+
+        "query": "NASDAQ:+CSCO"
     },
     {
-        "name": "Sonya Frost",
-        "symbol": "ACN",
-        "isin": "IE00B4BNMY34",
-        "stock": "Accenture",
-        "quantity": 38,
-        "price": 153.44,
-        "amount": 5830.72,
-        "query": "NYSE:+ACN"
+        "name":"eBay Inc",
+        "symbol": "EBAY",
+        "isin": "US2786421030",
+
+
+        "price": 37.80,
+
+        "query": "NASDAQ:+EBAY"
     },
     {
-        "name": "Sonya Frost",
-        "symbol": "FB",
-        "isin": "US30303M1027",
-        "stock": "Facebook Inc",
-        "quantity": 41,
-        "price": 176.61,
-        "amount": 7241.01,
-        "query": "NASDAQ:+FB"
+        "name":"Fiserv Inc",
+        "symbol": "FISV",
+        "isin": "US3377381088",
+
+
+        "price": 70.41,
+
+        "query": "NASDAQ:+FISV"
+    },
+
+    {
+        "name":"Symantec Corp",
+        "symbol": "SYMC",
+        "isin": "US8715031089",
+
+
+        "price": 28.44,
+
+        "query": "NASDAQ:+SYMC"
     },
     {
-        "name": "Jena Gaines",
-        "symbol": "T",
-        "isin": "US00206R1023",
-        "stock": "AT&T Inc",
-        "quantity": 75,
-        "price": 32.14,
-        "amount": 2410.5,
-        "query": "NYSE:+T"
+        "name":"Viacom Inc",
+        "symbol": "VIAB",
+        "isin": "US92553P2011",
+
+
+        "price": 30.70,
+
+        "query": "NASDAQ:+VIAB"
     },
     {
-        "name": "Charde Marshall",
-        "symbol": "ACN",
-        "isin": "IE00B4BNMY34",
-        "stock": "Accenture",
-        "quantity": 24,
-        "price": 153.44,
-        "amount": 3682.56,
-        "query": "NYSE:+ACN"
+        "name":"Tesla Inc",
+        "symbol": "TSLA",
+        "isin": "US88160R1014",
+
+
+        "price": 302.77,
+
+        "query": "NASDAQ:+TSLA"
     },
     {
-        "name": "Haley Kennedy",
-        "symbol": "INTL",
-        "isin": "US4581401001",
-        "stock": "Intel Corporation",
-        "quantity": 35,
-        "price": 52.78,
-        "amount": 1847.3,
-        "query": "NASDAQ:+INTC"
+        "name":"Vodafone Group PLC",
+        "symbol": "VOD",
+        "isin": "GB00BH4HKS39",
+
+
+        "price": 28.84,
+
+        "query": "NASDAQ:+VOD"
     },
     {
-        "name": "Tatyana Fitzpatrick",
-        "symbol": "MSFT",
-        "isin": "US5949181045",
-        "stock": "Microsoft Corp.",
-        "quantity": 83,
-        "price": 95.16,
-        "amount": 7898.28,
-        "query": "NASDAQ:+MSFT"
+        "name":"Vertex Pharmaceuticals Inc",
+        "symbol": "VRTX",
+        "isin": "US92532F1003",
+
+
+        "price": 149.50,
+
+        "query": "NASDAQ:+VRTX"
     },
     {
-        "name": "Michael Silva",
-        "symbol": "FB",
-        "isin": "US30303M1027",
-        "stock": "Facebook Inc",
-        "quantity": 44,
-        "price": 176.61,
-        "amount": 7770.84,
-        "query": "NASDAQ:+FB"
+        "name":"Texas Intruments Inc",
+        "symbol": "TXN",
+        "isin": "US8825081040",
+
+
+        "price": 105.51,
+
+        "query": "NASDAQ:+TXN"
+    },
+
+    {
+        "name":"Mattel Inc",
+        "symbol": "MAT",
+        "isin": "US5770811025",
+
+
+        "price": 14.47,
+
+        "query": "NASDAQ:+MAT"
     },
     {
-        "name": "Herrod Chandler",
-        "symbol": "GOOG",
-        "isin": "US02079K3059",
-        "stock": "Google",
-        "quantity": 89,
-        "price": 1048.21,
-        "amount": 93290.69,
-        "query": "NASDAQ:+GOOG"
+        "name":"Qualcomm Inc",
+        "symbol": "QCOM",
+        "isin": "US7475251036",
+
+
+        "price": 53.01,
+
+        "query": "NASDAQ:+QCOM"
     },
     {
-        "name": "Herrod Chandler",
-        "symbol": "T",
-        "isin": "US00206R1023",
-        "stock": "AT&T Inc",
-        "quantity": 61,
-        "price": 32.14,
-        "amount": 1960.54,
-        "query": "NYSE:+T"
+        "name":"Skyworks Solutions Inc",
+        "symbol": "SWKS",
+        "isin": "US83088M1027",
+
+
+        "price": 95.34,
+
+        "query": "NASDAQ:+SWKS"
     },
     {
-        "name": "Herrod Chandler",
-        "symbol": "ACN",
-        "isin": "IE00B4BNMY34",
-        "stock": "Accenture",
-        "quantity": 55,
-        "price": 153.44,
-        "amount": 8439.2,
-        "query": "NYSE:+ACN"
-    },
-    {
-        "name": "Paul Byrd",
-        "symbol": "AAPL",
-        "isin": "US0378331005",
-        "stock": "Apple Inc",
-        "quantity": 86,
-        "price": 183.83,
-        "amount": 15809.38,
-        "query": "NASDAQ:+AAPL"
-    },
-    {
-        "name": "Gloria Little",
-        "symbol": "MSFT",
-        "isin": "US5949181045",
-        "stock": "Microsoft Corp.",
-        "quantity": 18,
-        "price": 95.16,
-        "amount": 1712.88,
-        "query": "NASDAQ:+MSFT"
-    },
-    {
-        "name": "Bradley Greer",
-        "symbol": "GOOG",
-        "isin": "US02079K3059",
-        "stock": "Google",
-        "quantity": 38,
-        "price": 1048.21,
-        "amount": 39831.98,
-        "query": "NASDAQ:+GOOG"
-    },
-    {
-        "name": "Dai Rios",
-        "symbol": "FB",
-        "isin": "US30303M1027",
-        "stock": "Facebook Inc",
-        "quantity": 40,
-        "price": 176.61,
-        "amount": 7064.4,
-        "query": "NASDAQ:+FB"
-    },
-    {
-        "name": "Jenette Caldwell",
-        "symbol": "T",
-        "isin": "US00206R1023",
-        "stock": "AT&T Inc",
-        "quantity": 35,
-        "price": 32.14,
-        "amount": 1124.9,
-        "query": "NYSE:+T"
-    },
-    {
-        "name": "Yuri Berry",
-        "symbol": "INTL",
-        "isin": "US4581401001",
-        "stock": "Intel Corporation",
-        "quantity": 69,
-        "price": 52.78,
-        "amount": 3641.82,
-        "query": "NASDAQ:+INTC"
-    },
-    {
-        "name": "Caesar Vance",
-        "symbol": "ACN",
-        "isin": "IE00B4BNMY34",
-        "stock": "Accenture",
-        "quantity": 58,
-        "price": 153.44,
-        "amount": 8899.52,
-        "query": "NYSE:+ACN"
-    },
-    {
-        "name": "Doris Wilder",
-        "symbol": "MSFT",
-        "isin": "US5949181045",
-        "stock": "Microsoft Corp.",
-        "quantity": 30,
-        "price": 95.16,
-        "amount": 2854.8,
-        "query": "NASDAQ:+MSFT"
-    },
-    {
-        "name": "Doris Wilder",
-        "symbol": "AAPL",
-        "isin": "US0378331005",
-        "stock": "Apple Inc",
-        "quantity": 66,
-        "price": 183.83,
-        "amount": 12132.78,
-        "query": "NASDAQ:+AAPL"
-    }
-]
+        "name":"Starbuck SOlutions Inc",
+        "symbol": "SBUX",
+        "isin": "US8552441094",
+
+
+        "price": 57.45,
+
+        "query": "NASDAQ:+SBUX"
+    }]

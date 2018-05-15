@@ -1,159 +1,382 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-
     <meta charset="utf-8">
-    <title>OpenFin App</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
-    <link rel="stylesheet" href="main-page.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-      <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-      <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+      <title>OpenFin App</title>
+
+        <!--<link rel="stylesheet" href="//cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">-->
+        <link rel="stylesheet" href="https://bootswatch.com/3/slate/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
+        <link rel="stylesheet" href="main-page.css">
+        <link rel="stylesheet" href="dashboardCss.css">
+        <link rel="stylesheet" href="Horizontal-BarChart.css">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
         <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/zingchart-angularjs/1.2.0/zingchart-angularjs.min.js"></script>
-  <script src ="js/MainPageController.js"></script>
+        <script src ="js/MainPageController.js"></script>
+        <script src ="js/Horizontal-BarChart.js"></script>
 
-  </head>
-  <body>
+        <!--modal links-->
+        <!-- <script src="js/angular-ui-bootstrap-modal.js"></script> -->
+        <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+        <!-- end of modal-->
 
-      <div class="header">
-		    <span class="glyphicon glyphicon-remove-circle close"></span>
-	  </div>
-    <button class="btn btn-warning" onclick="createDeepLink()">Copy Deep Link</button>
-    <input class="btn btn-primary logout-button" type="submit" name="submit" class="submit upload-button" onclick="location.href='Login Form.html';" value="LOGOUT" />
+        <!-- Area chart dependencies -->
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+        <!-- <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script> -->
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
 
-    <!--Chart Placement[2]-->
-  <!-- <div id="chartDiv"></div>
-  <script>
-    var chartData = {
-      type: 'line',  // Specify your chart type here.
-      title: {
-        text: 'My First Chart' // Adds a title to your chart
-      },
-      legend: {}, // Creates an interactive legend
-      series: [  // Insert your series data here.
-          { values: [35, 42, 67, 89]},
-          { values: [28, 40, 39, 36]}
-      ]
-    };
-    zingchart.render({ // Render Method[3]
-      id: 'chartDiv',
-      data: chartData,
-      height: 400,
-      width: 600
-    });
-  </script> -->
+        <!-- Pie chart section -->
+        <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
 
-    <div class="container" ng-app="formvalid">
-      <div ng-controller="MainController" >
-      <div zingchart id="chart-1" zc-json="myJson" zc-width="100%" zc-height="568px"  ng-show ="isChartVisible"></div>
-    </div>
-      <div class="panel" data-ng-controller="validationCtrl">
-          <div class="panel-body">
-          <table class="table table-bordered bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Symbol</th>
-              <th>ISIN</th>
-              <th>Stock</th>
-              <th>Quantity</th>
-              <th>Price</th>
-              <th>Amount</th>
-              <th></th>
-            </tr>
-          </thead>
-            <tbody>
-                <tr ng-repeat="n in data">
-                <td style="text-align: right"><input type="checkbox" ng-change="chartShowHide()"  ng-model="showChart" ng-checked="false"></input></td>
-                <td>{{n.name}}</td>
-                <td><button class="btn btn-link" ng-click="openStockDetails(n.query)">{{n.symbol}}</a></td>
-                <td>{{n.isin}}</td>
-                <td>{{n.stock}}</td>
-                <td style="text-align: right">{{n.quantity}}</td>
-                <td style="text-align: right">{{n.price}}</td>
-                <td style="text-align: right">${{n.amount}}</td>
-                <td><button type="button" onclick="handleEditBtnClick()" class="btn btn-warning openWindowBtn">Edit Row</button></td>
-              </tr>
-            </tbody>
-        </table>
+        <!-- world map section -->
+        <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+        <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+        <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
+        <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
+
+
+        <link rel="Stylesheet" type="text/css" href="login-form.css"/>
+
+      </head>
+
+    <body ng-app="formvalid">
+
+<!--Login/Signup Modal-->
+      <div ng-controller="ModalDemoCtrl" data-ng-init="open('lg')" >
+          <script type="text/ng-template" id="myModalContent.html">
+              <!-- <div class="modal-header">
+                 <span class="glyphicon glyphicon-remove-circle closeModal" ></span>
+              </div> -->
+              <div class="modal-body">
+                <div class="loginModal">
+                         <h1> Login </h1>
+                              <input type="text" placeholder="Email" required="" id="username" required />
+                              <input type="password" placeholder="Password" id="password" required />
+                              <a href="Main page.html" class="forgot">forgot password?</a>
+                              <input type="submit" ng-click="ok()" value="Let me in">
+                              <h3> Are you a new user? </h3>
+                              <input type="submit" onclick="location.href='Signup Form.html';" value="Sign up">
+                </div>
+              </div>
+              <!-- <div class="modal-footer">
+                  <button class="btn btn-primary" ng-click="ok()">OK</button>
+                  <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+              </div> -->
+          </script>
+
       </div>
-    </div>
-    </div>
 
-    <!-- <div class="dataTable-div">
-    <table id="example" class="table table-striped table-bordered" style="width:100%">
+  <!-- main container -->
+        <div class="container-fluid" ng-controller="MainController">
 
-     </table>
-   </div> -->
+  <!-- New allignment start-->
 
-<script src="./js/newWindow.js"></script>
-<script src="./js/DeepLink.js"></script>
+  <!-- Main content div -->
+              <div class="container">
 
-<!-- <script type="text/javascript">
-     var menuDisplayed = false;
-     var menuBox = null;
-
-     window.addEventListener("contextmenu", function() {
-     var left = arguments[0].clientX;
-     var top = arguments[0].clientY;
-
-     menuBox = window.document.querySelector(".menu");
-     menuBox.style.left = left + "px";
-     menuBox.style.top = top + "px";
-     menuBox.style.display = "block";
-
-     arguments[0].preventDefault();
-
-     menuDisplayed = true;
- }, false);
-
- window.addEventListener("click", function() {
-     if(menuDisplayed == true){
-         menuBox.style.display = "none";
-     }
- }, true);
- </script> -->
+  <!-- Header section Starts  -->
+                  <nav class="navbar navbar-default" style="width:100.3%">
+                    <div class="navbar-header">
+                      <a class="navbar-brand" href="#">
+                        <img src="img/Wellington_logo.svg" alt="logo"  style="margin:-15px;background:#fff;width: 130%;height: 250%;">
+                      </a>
+                    </div>
+                      <p class="navbar-text">Wellington Management Dashboard</p>
+                      <ul style="margin-right: 0px;" class="nav navbar-nav navbar-right">
+                        <!-- <li><a href="Login Form.html" style="text-decoration:none"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li> -->
+                             <!-- <li style="margin: 10px;"><button class="btn btn-warning" onclick="createDeepLink()">Copy Deep Link</button></li> -->
+                             <li style="margin: 10px;">
+                               <button style="background-color: transparent;border: none;" onclick="createDeepLink()" data-toggle="tooltip" title="Copy Deep Link">
+                                 <span class="glyphicon glyphicon-link" style="font-size: 1.75em; color: #faa123;"></span>
+                              </button>
+                               </li>
 
 
- <!-- <script type="text/javascript">
- $(document).ready(function() {
-  $('#example')
-  // .on( 'page.dt',   function () { addEventToEditBtn(); } )
-  .DataTable();
-} );
- </script> -->
+                             <li><span class="glyphicon glyphicon-remove-circle closeApp"></span></li>
+                     </ul>
+                  </nav>
+  <!-- Header section End  -->
+
+  <!-- parent row section -->
+
+          <div class="row">
+
+  <!-- notification-section -->
+
+                    <div class="col-md-3 notification-section">
+                      <div class="col-md-12 notification">
+                                <div class="col-md-12" style="height:100%;width:110%;">
+                                  <div class="col-md-10"><h6 style="margin-left: -10px;">Notfications</h6></div>
+                                    <div class="col-md-2 glyphicon glyphicon-bell" style="margin-top: 10px;"></div>
+                                </div>
+
+                            <div class="col-md-12 picture">
+                                <div class="col-md-6 dp">
+                                    <img id="employee" src="img\bad-pastor.jpg" alt="">
+                                </div>
+
+                                <!-- <div class="col-md-6 weather">
+                                      <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK"
+                                          data-font="Jura" data-icons="Climacons Animated" data-mode="Current" data-days="3"
+                                          data-basecolor="rgba(255, 255, 255, 0)" data-textcolor="#777777" data-highcolor="#f98629" data-lowcolor="#f98629"
+                                          data-mooncolor="#f98629" data-cloudcolor="#f98629" data-cloudfill="rgba(255, 255, 255, 0)" data-raincolor="#f98629" data-snowcolor="#f98629">
+                                      </a>
+                                </div> -->
+                            </div>
+
+                                <div class="col-md-8"><h4 style="margin-top:-10px;margin-bottom:0px">John Smith</h4></div>
+                                <div class="col-md-8 designation" style="margin-top:-5px;"><h6>Senior Vice President</h6></div>
+
+                            <div class="col-md-8 natificationURL">
+                                <ul>
+                                      <li><a href="underConstruction.html">Pending approvals</a></li>
+                                      <li><a href="underConstruction.html">Unread mails</a></li>
+                                      <li><a href="underConstruction.html">Upcoming events</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="col-md-4 notificationGlyphicons">
+                                <ul>
+                                      <li><span class="badge" style=" background-color:#faa123;color:#3e3c3c;">15</span></li>
+                                      <li><span class="badge" style=" background-color:#faa123;color:#3e3c3c;">10</span></li>
+                                      <li><span class="badge" style=" background-color:#faa123; color:#3e3c3c;">12</span></li>
+                                </ul>
+                           </div>
+                    </div>
+
+            <div class="col-md-12 newsfeed">
+                          <h6>News Feed</h6>
+                  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+<!-- Indicators -->
+                            <ol class="carousel-indicators">
+                                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                                  <li data-target="#myCarousel" data-slide-to="1"></li>
+                                  <li data-target="#myCarousel" data-slide-to="2"></li>
+                            </ol>
+
+<!-- Wrapper for slides -->
+                      <div class="carousel-inner">
+                          <div class="item active">
+                              <ul>
+                                  <li>CRISIL upgrades credit rating of Jindal Steel and Power Limited to Stable</li>
+                                  <li>PC Jeweller announces share buyback worth Rs 424 crore</li>
+                                  <li>ETMarkets Evening Podcast: Will bears take back control on Dalal Street now?</li>
+                              </ul>
+                          </div>
+                          <div class="item">
+                               <ul>
+                                  <li>Value of promoters pledged shares rises 7.5% in April</li>
+                                  <li>Jaypee group offers 2,000 shares to home buyers</li>
+                                  <li>Nestle India Q1 profit up 36% at Rs 424.03 crore</li>
+                              </ul>
+                          </div>
+                          <div class="item">
+                               <ul>
+                                  <li>ETMarkets After Hours: 10 things you need to know about Thursday’s market</li>
+                                  <li>Tech view: Dark Cloud Cover on Nifty chart signals bearish bias</li>
+                                  <li>F&O: Followup buying missing at higher levels, Nifty supports intact</li>
+                              </ul>
+                          </div>
+                      </div>
+
+<!-- Left and right controls -->
+                            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                              <span id="Arrow" class="glyphicon glyphicon-chevron-left"></span>
+                              <span class="sr-only">Previous</span>
+                            </a>
+                            <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                              <span id="Arrow" class="glyphicon glyphicon-chevron-right"></span>
+                              <span class="sr-only">Next</span>
+                            </a>
+                    </div>
+            </div>
+
+<!-- Theme setting section -->
+                            <div class="col-md-12 theme-settings">
+                              <div class="row">
+                              <div class="col-md-6 settings_label">
+                                <h6>Settings</h6>
+                              </div>
+                              <div class="col-md-6 settings_glyphicon">
+                                <span class="glyphicon glyphicon-cog"></span>
+                              </div>
+                        </div>
+                                <img src="img/el_icon_2.png" width="35px" ng-hide="darkTheme" ng-click="themeSwitcher()">
+                                <img src="img/el_icon_3.png" width="35px" ng-show="darkTheme" ng-click="themeSwitcher()">
+                                <!-- <button type="button" class="themeButton btn btn-warning" ng-click="themeSwitcher()">Light Theme</button> -->
+                                <!-- <button type="button" class="btn btn-primary" style="float:right"><a href="Login Form.html" style="text-decoration:none"><span class="glyphicon glyphicon-log-out"></span> Logout</a></button> -->
+                                <a href="Main page.html" style="text-decoration:none;font-size:2.3em;float:right;"><span class="glyphicon glyphicon-off"></span></a>
+                                <!-- <span class="glyphicon glyphicon-off" style="float:right"></span> -->
+                            </div>
+              </div>
 
 
- <script type="text/javascript">
- fin.desktop.main(init);
+<!-- data-container-div -->
+              <div class="col-md-9 data-container-div">
+                      <div class="col-md-12 stock-watch" style="width:102.5%">
+                          <h6>Stock Watch</h6>
+                                <div class="panel" >
+                                      <div class="panel-body">
+                                              <table id="stockTable" class="table bordered table-striped table-condensed datatable" ui-jq="dataTable" ui-options="dataTableOpt">
+                                                      <thead>
+                                                        <tr>
+                                                          <th></th>
+                                                          <th>Name</th>
+                                                          <th>Symbol</th>
+                                                          <th>ISIN</th>
+                                                          <th>Price</th>
+                                                          <!-- <th></th> -->
+                                                          </tr>
+                                                      </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="n in data">
+                                                          <td style="text-align: right"><input type="checkbox" ng-init="chartShowHide($index,showChart,n) "  ng-click="addValues($index,showChart,n)"  ng-model="showChart" ng-checked="true"></input></td>
+                                                            <td>{{n.name}}</td>
+                                                            <td><button class="btn btn-link" ng-click="openStockDetails(n.query)">{{n.symbol}}</a></td>
+                                                            <td>{{n.isin}}</td>
+                                                            <td style="text-align: right">{{n.price}}</td>
+                                                            <!-- <td><button type="button" onclick="handleEditBtnClick()" class="btn btn-warning openWindowBtn">Edit Row</button></td> -->
+                                                          </tr>
+                                                        </tbody>
+                                              </table>
+                                      </div>
+                                </div>
+                        </div>
 
-function init(){
-var finWindow = fin.desktop.Window.getCurrent();
-finWindow.updateOptions({frame: false});
-var close = document.querySelector('.close');
 
-close.addEventListener('click', function(){
-fin.desktop.Window.getCurrent().close();
-})
-}
+<!-- Chart section -->
 
-// Deep Linking
-function createDeepLink() {
-  var redirect = './Main page.html';
-  generateLink(redirect);
-}
+      <div class="col-md-12 chart-section">
 
- </script>
+<!-- First chart row -->
 
-</script>
+                            <div class="row" style="width:105%">
+
+<!-- Bar chart section -->
+
+                                      <div class="col-md-6 bar-chart">
+                                            <h6>Stock Price Comparison</h6>
+                                                    <div zingchart id="chart-1"  zc-json="myJson" zc-render="myRender" zc-width="100%" zc-height="250px"></div>
+                                      </div>
+
+<!-- Line Chart section -->
+
+                                      <div class="col-md-6 line-chart">
+                                            <h6>Stock Price Movement</h6>
+                                                    <div id="lineChartdiv"  data-ng-init="lineChartGenerator()"></div>
+                                      </div>
+                            </div>
+
+<!-- Second chart row -->
+
+                              <div class="row" style="width:105%">
+
+<!-- Pie chart section -->
+
+                                      <div class="col-md-6 pie-chart">
+                                            <h6>Stock Price Analysis</h6>
+                                                    <div id="container" style="min-width: 310px; height: 250px; max-width: 100%; margin: 0 auto" data-ng-init="pieChartGenerator()"></div>
+                                      </div>
+
+<!-- World map section -->
+
+                                      <div class="col-md-6 worldmap">
+                                            <h6>Global Equity Markets</h6>
+                                                    <div id="chartdiv" data-ng-init="worldMapGenerator()"></div>
+                                      </div>
+                              </div>
+                    </div> <!--Chart section end-->
+                  </div> <!--Data-container-div end-->
+                </div> <!--Parent-row end-->
+              </div> <!--container end-->
+            </div> <!--container-fluid end-->
+
+
+<!-- New allignment end -->
+
+
+            <script src="./js/newWindow.js"></script>
+            <script src="./js/DeepLink.js"></script>
+            <script type="text/javascript">
+                    let activePage = 0;
+                    $(document).ready(function() {
+                      var datatable = $('.datatable');
+                      datatable.on( 'page.dt',   function (e, settings) {
+                        activePage = $('.datatable').DataTable().page.info().page;
+                      })
+
+                      // read search parameter for pagenumber
+                      let search = window.location.search;
+                      if(search != undefined && search != null && search.trim() != "") {
+                          let searchList = search.replace(/\?/g, '').split(/&/g);
+                          let query = {};
+                          for (let s of searchList) {
+                            sList = s.split(/=/g);
+                            query[sList[0]] = sList[1];
+                          }
+
+                          // change page
+                          datatable.on( 'init.dt', function () {
+                            console.log('aehe');
+                            datatable.DataTable().page(parseInt(query.page)).draw('page');
+                          });
+                      }
+                    });
+
+                     fin.desktop.main(init);
+
+                    function init(){
+                    var finWindow = fin.desktop.Window.getCurrent();
+                    finWindow.updateOptions({frame: false});
+                    var close = document.querySelector('.closeApp');
+
+                    close.addEventListener('click', function(){
+                    fin.desktop.Window.getCurrent().close();
+                    })
+                    }
+
+                    function initModal(){
+                    var finWindow = fin.desktop.Window.getCurrent();
+                    finWindow.updateOptions({frame: false});
+                    var close = document.querySelector('.closeModal');
+
+                    close.addEventListener('click', function(){
+                    fin.desktop.Window.getCurrent().close();
+                    })
+                    }
+
+
+                    // Deep Linking
+                    function createDeepLink() {
+                      var redirect = `./Main page.html?page=${activePage}`;
+                      generateLink(redirect);
+                    }
+            </script>
+            <script>
+                    !function(d,s,id){
+                      var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){
+                        js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';
+                        fjs.parentNode.insertBefore(js,fjs);}}
+                        (document,'script','weatherwidget-io-js');
+            </script>
   </body>
 
 </html>

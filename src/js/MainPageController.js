@@ -1,663 +1,822 @@
 //Angularjs and jquery.datatable with ui.bootstrap and ui.utils
 
-var app=angular.module('formvalid', ['ui.bootstrap','ui.utils','zingchart-angularjs']);
-app.controller('validationCtrl',function($rootScope,$scope,$http){
-  var request = {
-                method: 'get',
-                url: 'sample.json',
-                dataType: 'json',
-                contentType: "application/json"
-            };
+var app=angular.module('formvalid', ['ui.bootstrap','ui.utils','zingchart-angularjs','ui.bootstrap.tpls']);
 
-            $scope.arrTest = new Array;
+//Login/Signup modal Logic
+app.controller('ModalDemoCtrl', function ($scope, $modal, $log) {
 
-            $http(request)
-                .then(function (jsonData) {
-                    $scope.arrTest = jsonData.data || [];
-                    $scope.data = $scope.arrTest;
-                    console.log($scope.data);
-                }
-                ,function (error) {
-               console.log("error")
-                });
+  $scope.items = ['item1', 'item2', 'item3'];
 
-$scope.dataTableOpt = {
-  "aLengthMenu": [[10, 50, 100,-1], [10, 50, 100,'All']],
+  $scope.open = function (size) {
+
+    var modalInstance = $modal.open({
+      templateUrl: 'myModalContent.html',
+      controller: 'ModalInstanceCtrl',
+        backdrop: 'static',
+      size: size,
+      resolve: {
+        items: function () {
+          return $scope.items;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      $scope.selected = selectedItem;
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $modal service used above.
+
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
+
+  $scope.items = items;
+  $scope.selected = {
+    item: $scope.items[0]
   };
 
-$scope.chartShowHide = function()
-{
-  console.log("chart"+$rootScope.isChartVisible);
-  console.log("showChart"+$scope.showChart);
-//  var chartVisibility =  $rootScope.isChartVisible;
-  if( $rootScope.isChartVisible == false)
-  {$rootScope.isChartVisible = true;}
-  else {
-    $rootScope.isChartVisible = false;
-  }
+  $scope.ok = function () {
+    $modalInstance.close($scope.selected.item);
+  };
 
-}
-  $scope.openStockDetails = function(query) {
-    console.log(query);
-    var win = new StockDetailsWindow(query).then(function (win) {
-        console.log(win);
-        win.addEventListener("close-requested", function () {
-            win.close(true, function () {
-                console.log("window closed");
-            }, function (err) {
-                console.log("error while closing window :  ", err);
-
-            });
-        });
-    });
-  }
-
-
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });
-app.controller('MainController', function($rootScope,$scope){
-$rootScope.isChartVisible = false;
-    $scope.myJson = {
-      gui: {
-        contextMenu: {
-          button: {
-            visible: 0
-          }
-        }
-      },
-      backgroundColor: "#434343",
-      globals: {
-          shadow: false,
-          fontFamily: "Helvetica"
-      },
-      type: "area",
 
-      legend: {
-          layout: "x4",
-          backgroundColor: "transparent",
-          borderColor: "transparent",
-          marker: {
-              borderRadius: "50px",
-              borderColor: "transparent"
-          },
-          item: {
-              fontColor: "white"
-          }
+//end of modal Logic
 
-      },
-      scaleX: {
-          maxItems: 8,
-          transform: {
-              type: 'date'
-          },
-          zooming: true,
-          values: [
-            1442905200000, 1442908800000,
-            1442912400000, 1442916000000,
-            1442919600000, 1442923200000,
-            1442926800000, 1442930400000,
-            1442934000000, 1442937600000,
-            1442941200000, 1442944800000,
-            1442948400000
-          ],
-          lineColor: "white",
-          lineWidth: "1px",
-          tick: {
-              lineColor: "white",
-              lineWidth: "1px"
-          },
-          item: {
-              fontColor: "white"
-          },
-          guide: {
-              visible: false
-          }
-      },
-      scaleY: {
-          lineColor: "white",
-          lineWidth: "1px",
-          tick: {
-              lineColor: "white",
-              lineWidth: "1px"
-          },
-          guide: {
-              lineStyle: "solid",
-              lineColor: "#626262"
-          },
-          item: {
-              fontColor: "white"
-          },
-      },
-      tooltip: {
-          visible: false
-      },
-      crosshairX: {
-          scaleLabel: {
-              backgroundColor: "#fff",
-              fontColor: "black"
-          },
-          plotLabel: {
-              backgroundColor: "#434343",
-              fontColor: "#FFF",
-              _text: "Number of hits : %v"
-          }
-      },
-      plot: {
-          lineWidth: "2px",
-          aspect: "spline",
-          marker: {
-              visible: false
-          }
-      },
-      series: [{
-          text: "All Sites",
-          values: [2596, 2626, 4480,
-                   6394, 7488, 14510,
-                   7012, 10389, 20281,
-                   25597, 23309, 22385,
-                   25097, 20813, 20510],
-          backgroundColor1: "#77d9f8",
-          backgroundColor2: "#272822",
-          lineColor: "#40beeb"
-      }, {
-          text: "Site 1",
-          values: [479, 199, 583,
-                   1624, 2772, 7899,
-                   3467, 3227, 12885,
-                   17873, 14420, 12569,
-                   17721, 11569, 7362],
-          backgroundColor1: "#4AD8CC",
-          backgroundColor2: "#272822",
-          lineColor: "#4AD8CC"
-      }, {
-          text: "Site 2",
-          values: [989, 1364, 2161,
-                   2644, 1754, 2015,
-                   818, 77, 1260,
-                   3912, 1671, 1836,
-                   2589, 1706, 1161],
-          backgroundColor1: "#1D8CD9",
-          backgroundColor2: "#1D8CD9",
-          lineColor: "#1D8CD9"
-      }, {
-          text: "Site 3",
-          values: [408, 343, 410,
-                   840, 1614, 3274,
-                   2092, 914, 5709,
-                   6317, 6633, 6720,
-                   6504, 6821, 4565],
-          backgroundColor1: "#D8CD98",
-          backgroundColor2: "#272822",
-          lineColor: "#D8CD98"
-      }]
+app.controller('MainController', function($rootScope,$scope,$http){
+  var request = {
+                  method: 'get',
+                  url: 'sample.json',
+                  dataType: 'json',
+                  contentType: "application/json"
+              };
+
+              $scope.arrTest = new Array;
+
+              $http(request)
+                  .then(function (jsonData) {
+                      $scope.arrTest = jsonData.data || [];
+                      $rootScope.data = $scope.arrTest;
+                    //  console.log($rootScope.data);
+                  }
+                  ,function (error) {
+                 console.log("error")
+                  });
+
+  $scope.dataTableOpt = {
+    "aLengthMenu": [[5, 50, 100,-1], [5,10, 50, 100,'All']],
     };
+
+    $scope.openStockDetails = function(query) {
+      var win = new StockDetailsWindow(query).then(function (win) {
+          console.log(win);
+          win.addEventListener("close-requested", function () {
+              win.close(true, function () {
+                  console.log("window closed");
+              }, function (err) {
+                  console.log("error while closing window :  ", err);
+
+              });
+          });
+      });
+    };
+    $rootScope.isChartVisible = false;
+    var chartArrayStock = [];
+    var chartArrayPrice = [];
+
+    $scope.addValues = function(index,check){
+
+      if(check==false || check == undefined)
+      {
+      for( var i =0; i<5 ; i++)
+    {
+      if(chartArrayStock[i] === $rootScope.data[index].symbol )
+    {  var priceIndex = chartArrayStock.indexOf($rootScope.data[index].symbol);
+       chartArrayStock.splice(priceIndex,1);
+    }
+    }
+
+      for( var i =0; i<5 ; i++)
+    {
+      if(chartArrayPrice[i] === $rootScope.data[index].price )
+    {  var priceIndex = chartArrayPrice.indexOf($rootScope.data[index].price);
+       chartArrayPrice.splice(priceIndex,1);
+    }
+    }
+    }//if end
+    else {
+      chartArrayStock.push($rootScope.data[index].symbol);
+      chartArrayPrice.push($rootScope.data[index].price);
+    }//else end
+    }//add values end
+
+    $scope.chartShowHide = function(index,check)
+    {
+     for(var i=0;i<=index ; i++)
+     {
+       if(chartArrayStock.indexOf($rootScope.data[i].symbol) == -1 && index < 5)
+      {
+        chartArrayStock.push($rootScope.data[i].symbol);
+      console.log("chartArrayStock init:"+chartArrayStock[i]);}//end if
+     }//end for
+
+      for(var i=0;i<=index ; i++)
+     {
+        if(chartArrayPrice.indexOf($rootScope.data[i].price) == -1 && index < 5)
+      { chartArrayPrice.push($rootScope.data[i].price);
+        console.log("chartArrayPrice init:"+chartArrayPrice[i]);
+      }
+     }//end for
+
+    //chart json start
+    $scope.myJson = {
+          type : "vbar3d",
+          title:{
+            fontColor :"white",
+          },
+          backgroundColor:"transparent",
+          "scale-y":{
+           "guide":{
+     "line-color":"transparent",
+     "line-width":2,
+     "line-style":"solid" //"solid", "dotted", "dashed", "dashdot"
+   }
+           },
+
+              "scale-x":{
+              "values":chartArrayStock
+            },
+           height:290,
+          series : [
+            {
+              values : chartArrayPrice,
+              backgroundColor : "#2a7091"
+            }
+          ]
+        };//chart json end
+        $scope.myRender = {
+                  defaults:  {}
+                };
+
+    }//end of showhide chart function
+
+    ///// Line chart function
+    $scope.lineChartGenerator = function(){
+      // var chart = AmCharts.makeChart("lineChartdiv", {
+      //         "type": "serial",
+      //         "theme": "dark",
+      //         "marginRight": 50,
+      //         "marginTop": 10,
+      //         "marginLeft": 10,
+      //         "autoMarginOffset": 10,
+      //         "dataProvider": [{
+      //             "date": "2012-03-01",
+      //             "price": 20
+      //         }, {
+      //             "date": "2012-03-02",
+      //             "price": 75
+      //         }, {
+      //             "date": "2012-03-03",
+      //             "price": 15
+      //         }, {
+      //             "date": "2012-03-04",
+      //             "price": 75
+      //         }, {
+      //             "date": "2012-03-05",
+      //             "price": 158
+      //         }, {
+      //             "date": "2012-03-06",
+      //             "price": 57
+      //         }, {
+      //             "date": "2012-03-07",
+      //             "price": 107
+      //         }, {
+      //             "date": "2012-03-08",
+      //             "price": 89
+      //         }, {
+      //             "date": "2012-03-09",
+      //             "price": 75
+      //         }, {
+      //             "date": "2012-03-10",
+      //             "price": 132
+      //         }, {
+      //             "date": "2012-03-11",
+      //             "price": 158
+      //         }, {
+      //             "date": "2012-03-12",
+      //             "price": 56
+      //         }, {
+      //             "date": "2012-03-13",
+      //             "price": 169
+      //         }, {
+      //             "date": "2012-03-14",
+      //             "price": 24
+      //         }, {
+      //             "date": "2012-03-15",
+      //             "price": 147
+      //         }],
+      //         "valueAxes": [{
+      //             "logarithmic": true,
+      //             "dashLength": 1,
+      //             "guides": [{
+      //                 "dashLength": 6,
+      //                 "inside": true,
+      //                 "label": "average",
+      //                 "lineAlpha": 1,
+      //                 "value": 90.4
+      //             }],
+      //             "position": "left"
+      //         }],
+      //         "graphs": [{
+      //             "bullet": "round",
+      //             "id": "g1",
+      //             "bulletBorderAlpha": 1,
+      //             "bulletColor": "#FFFFFF",
+      //             "bulletSize": 7,
+      //             "lineThickness": 2,
+      //             "title": "Price",
+      //             "type": "smoothedLine",
+      //             "useLineColorForBulletBorder": true,
+      //             "valueField": "price"
+      //         }],
+      //         "chartScrollbar": {},
+      //         "chartCursor": {
+      //             "valueLineEnabled": true,
+      //             "valueLineBalloonEnabled": true,
+      //             "valueLineAlpha": 0.5,
+      //             "fullWidth": true,
+      //             "cursorAlpha": 0.05
+      //         },
+      //         "dataDateFormat": "YYYY-MM-DD",
+      //         "categoryField": "date",
+      //         "categoryAxis": {
+      //             "parseDates": true
+      //         },
+      //         "export": {
+      //             "enabled": false
+      //         }
+      //     });
+      //
+      //     chart.addListener("dataUpdated", zoomChart);
+      //
+      //     function zoomChart() {
+      //         chart.zoomToDates(new Date(2012, 2, 2), new Date(2012, 2, 10));
+      //     }
+
+      var chartData = generateChartData();
+
+var chart = AmCharts.makeChart("lineChartdiv", {
+    "type": "serial",
+    "theme": "light",
+    "marginRight": 80,
+    "dataProvider": chartData,
+    "valueAxes": [{
+        "position": "left",
+        "title": ""
+    }],
+    "graphs": [{
+        "id": "g1",
+        "fillAlphas": 0.4,
+        "valueField": "visits",
+         "balloonText": "<div style='margin:5px; font-size:10px;'>Price:<b>[[value]]</b></div>"
+    }],
+    "chartScrollbar": {
+        "graph": "g1",
+        "scrollbarHeight": 80,
+        "backgroundAlpha": 0,
+        "selectedBackgroundAlpha": 0.1,
+        "selectedBackgroundColor": "#888888",
+        "graphFillAlpha": 0,
+        "graphLineAlpha": 0.5,
+        "selectedGraphFillAlpha": 0,
+        "selectedGraphLineAlpha": 1,
+        "autoGridCount": true,
+        "color": "#AAAAAA"
+    },
+    "chartCursor": {
+        "categoryBalloonDateFormat": "JJ:NN, DD MMMM",
+        "cursorPosition": "mouse"
+    },
+    "categoryField": "date",
+    "categoryAxis": {
+        "minPeriod": "mm",
+        "parseDates": true
+    },
+    "export": {
+        "enabled": false,
+         "dateFormat": "YYYY-MM-DD HH:NN:SS"
+    }
 });
 
+chart.addListener("dataUpdated", zoomChart);
+// when we apply theme, the dataUpdated event is fired even before we add listener, so
+// we need to call zoomChart here
+zoomChart();
+// this method is called when chart is first inited as we listen for "dataUpdated" event
+function zoomChart() {
+    // different zoom methods can be used - zoomToIndexes, zoomToDates, zoomToCategoryValues
+    chart.zoomToIndexes(chartData.length - 250, chartData.length - 100);
+}
+
+// generate some random data, quite different range
+function generateChartData() {
+    var chartData = [];
+    // current date
+    var firstDate = new Date();
+    // now set 500 minutes back
+    firstDate.setMinutes(firstDate.getDate() - 1000);
+
+    // and generate 500 data items
+    var visits = 500;
+    for (var i = 0; i < 500; i++) {
+        var newDate = new Date(firstDate);
+        // each time we add one minute
+        newDate.setMinutes(newDate.getMinutes() + i);
+        // some random number
+        visits += Math.round((Math.random()<0.5?1:-1)*Math.random()*10);
+        // add data item to the array
+        chartData.push({
+            date: newDate,
+            visits: visits
+        });
+    }
+    return chartData;
+}
+    };
+
+
+    ////Bar Chart function
+      // $scope.barChartGenerator = function(){
+      //   var initStackedBarChart = {
+      //   	draw: function(config) {
+      //   		me = this,
+      //   		domEle = config.element,
+      //   		stackKey = config.key,
+      //   		data = config.data,
+      //   		margin = {top: 20, right: 20, bottom: 30, left: 50},
+      //   		parseDate = d3.timeParse("%m/%Y"),
+      //   		width = 400 - margin.left - margin.right,
+      //   		height = 250 - margin.top - margin.bottom,
+      //   		xScale = d3.scaleLinear().rangeRound([0, width]),
+      //   		yScale = d3.scaleBand().rangeRound([height, 0]).padding(0.1),
+      //   		color = d3.scaleOrdinal(d3.schemeCategory20),
+      //   		xAxis = d3.axisBottom(xScale),
+      //   		yAxis =  d3.axisLeft(yScale).tickFormat(d3.timeFormat("%b")),
+      //   		svg = d3.select("#"+domEle).append("svg")
+      //   				.attr("width", width + margin.left + margin.right)
+      //   				.attr("height", height + margin.top + margin.bottom)
+      //           .attr('style',  'background:#7a80')
+      //   				.append("g")
+      //   				.attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+      //
+      //   		var stack = d3.stack()
+      //   			.keys(stackKey)
+      //   			/*.order(d3.stackOrder)*/
+      //   			.offset(d3.stackOffsetNone);
+      //
+      //   		var layers= stack(data);
+      //   			data.sort(function(a, b) { return b.total - a.total; });
+      //   			yScale.domain(data.map(function(d) { return parseDate(d.date); }));
+      //   			xScale.domain([0, d3.max(layers[layers.length - 1], function(d) { return d[0] + d[1]; }) ]).nice();
+      //
+      //   		var layer = svg.selectAll(".layer")
+      //   			.data(layers)
+      //   			.enter().append("g")
+      //   			.attr("class", "layer")
+      //   			.style("fill", function(d, i) { return color(i); });
+      //
+      //   		  layer.selectAll("rect")
+      //   			  .data(function(d) { return d; })
+      //   			.enter().append("rect")
+      //   			  .attr("y", function(d) { return yScale(parseDate(d.data.date)); })
+      //   			  .attr("x", function(d) { return xScale(d[0]); })
+      //   			  .attr("height", yScale.bandwidth())
+      //   			  .attr("width", function(d) { return xScale(d[1]) - xScale(d[0]) });
+      //
+      //   			svg.append("g")
+      //   			.attr("class", "axis axis--x")
+      //   			.attr("transform", "translate(0," + (height+5) + ")")
+      //         .style('fill','#fff')
+      //   			.call(xAxis);
+      //
+      //   			svg.append("g")
+      //   			.attr("class", "axis axis--y")
+      //   			.attr("transform", "translate(0,0)")
+      //   			.call(yAxis);
+      //   	}
+      //   }
+      //   var data = [{"date":"4/1854","total":30643,"disease":1,"wounds":0,"other":5},
+      //               {"date":"7/1854","total":28772,"disease":359,"wounds":0,"other":23},
+      //               {"date":"8/1854","total":30246,"disease":828,"wounds":1,"other":30},
+      //               {"date":"9/1854","total":30290,"disease":788,"wounds":81,"other":70},
+      //               {"date":"10/1854","total":8571,"disease":503,"wounds":132,"other":128},
+      //               {"date":"11/1854","total":29736,"disease":844,"wounds":287,"other":106},
+      //               {"date":"5/1854","total":23333,"disease":12,"wounds":0,"other":9},
+      //               {"date":"6/1854","total":28333,"disease":11,"wounds":0,"other":6}];
+      //   var key = ["wounds", "other", "disease"];
+      //   initStackedBarChart.draw({
+      //   	data: data,
+      //   	key: key,
+      //   	element: 'stackedBar'
+      //   });
+      // };
 
 
 
+// //// PieChart function
+//       $scope.pieChartGenerator = function(){
+//         var data = [10, 20, 100];
+//
+//         var width = 260,
+//         height = 220,
+//         radius = Math.min(width, height) / 2;
+//
+//         var color = d3.scaleOrdinal()
+//         .range(["#ff7f0e", "#aec7e8", "#1f77b4"]);
+//
+//         var arc = d3.arc()
+//         .outerRadius(radius - 10)
+//         .innerRadius(0);
+//
+//         var labelArc = d3.arc()
+//         .outerRadius(radius - 40)
+//         .innerRadius(radius - 40);
+//
+//         var pie = d3.pie()
+//         .sort(null)
+//         .value(function(d) { return d; });
+//
+//         var svg = d3.select("#pieChart").append("svg")
+//         .attr("width", width)
+//         .attr("height", height)
+//         .append("g")
+//         .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+//
+//         var g = svg.selectAll(".arc")
+//         .data(pie(data))
+//         .enter().append("g")
+//         .attr("class", "arc");
+//
+//         g.append("path")
+//         .attr("d", arc)
+//         .style("fill", function(d) { return color(d.data); });
+//
+//         g.append("text")
+//         .attr("transform", function(d) { return "translate(" + labelArc.centroid(d) + ")"; })
+//         .attr("dy", ".35em")
+//         .text(function(d) { return d.data; });
+//       };
+//
 
+   //     $scope.pieChartGenerator = function(){
+   //       var chart = AmCharts.makeChart( "pieChartdiv", {
+   //   "type": "pie",
+   //   "theme": "dark",
+   //   "dataProvider": [ {
+   //     "country": "Lithuania",
+   //     "litres": 501.9
+   //   }, {
+   //     "country": "Czech Republic",
+   //     "litres": 301.9
+   //   }, {
+   //     "country": "Ireland",
+   //     "litres": 201.1
+   //   }, {
+   //     "country": "Germany",
+   //     "litres": 165.8
+   //   }, {
+   //     "country": "Australia",
+   //     "litres": 139.9
+   //   }, {
+   //     "country": "Austria",
+   //     "litres": 128.3
+   //   }, {
+   //     "country": "UK",
+   //     "litres": 99
+   //   }, {
+   //     "country": "Belgium",
+   //     "litres": 60
+   //   }, {
+   //     "country": "The Netherlands",
+   //     "litres": 50
+   //   } ],
+   //   "valueField": "litres",
+   //   "titleField": "country",
+   //    "balloon":{
+   //    "fixedPosition":false
+   //   },
+   //   "export": {
+   //     "enabled": false
+   //   }
+   // } );
+   //  };
 
+    $scope.pieChartGenerator = function(){
 
+// Build the chart
+Highcharts.chart('container', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: ''
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: false
+            },
+            showInLegend: true
+        }
+    },
+    series: [{
+       name: 'Brands',
+       colorByPoint: true,
+       "colorField": "color",
+       data: [{
+           name: 'Microsoft',
+           y: 1048.21,
+           sliced: true,
+           selected: true,
+           color:"#2a7091"
+       },  {
+            name: 'Google',
+            y: 95.16
 
+        }, {
+            name: 'Facebook Inc',
+            y: 176.61
 
+        }, {
+            name: 'Intel Corporation',
+            y: 58.21
 
+        }, {
+            name: 'Accenture',
+            y: 153.44
+        }, {
+            name: 'AT&T Inc',
+            y: 32.14
+        }]
+    }]
+});
+    };
 
+// Theme changer js
 
-  // $scope.data=[
-  //       [
-  //           "Tiger Nixon",
-  //           "System Architect",
-  //           "Edinburgh",
-  //           "5421",
-  //           "2011\/04\/25",
-  //           "$320,800"
-  //       ],
-  //       [
-  //           "Garrett Winters",
-  //           "Accountant",
-  //           "Tokyo",
-  //           "8422",
-  //           "2011\/07\/25",
-  //           "$170,750"
-  //       ],
-  //       [
-  //           "Ashton Cox",
-  //           "Junior Technical Author",
-  //           "San Francisco",
-  //           "1562",
-  //           "2009\/01\/12",
-  //           "$86,000"
-  //       ],
-  //       [
-  //           "Cedric Kelly",
-  //           "Senior Javascript Developer",
-  //           "Edinburgh",
-  //           "6224",
-  //           "2012\/03\/29",
-  //           "$433,060"
-  //       ],
-  //       [
-  //           "Airi Satou",
-  //           "Accountant",
-  //           "Tokyo",
-  //           "5407",
-  //           "2008\/11\/28",
-  //           "$162,700"
-  //       ],
-  //       [
-  //           "Brielle Williamson",
-  //           "Integration Specialist",
-  //           "New York",
-  //           "4804",
-  //           "2012\/12\/02",
-  //           "$372,000"
-  //       ],
-  //       [
-  //           "Herrod Chandler",
-  //           "Sales Assistant",
-  //           "San Francisco",
-  //           "9608",
-  //           "2012\/08\/06",
-  //           "$137,500"
-  //       ],
-  //       [
-  //           "Rhona Davidson",
-  //           "Integration Specialist",
-  //           "Tokyo",
-  //           "6200",
-  //           "2010\/10\/14",
-  //           "$327,900"
-  //       ],
-  //       [
-  //           "Colleen Hurst",
-  //           "Javascript Developer",
-  //           "San Francisco",
-  //           "2360",
-  //           "2009\/09\/15",
-  //           "$205,500"
-  //       ],
-  //       [
-  //           "Sonya Frost",
-  //           "Software Engineer",
-  //           "Edinburgh",
-  //           "1667",
-  //           "2008\/12\/13",
-  //           "$103,600"
-  //       ],
-  //       [
-  //           "Jena Gaines",
-  //           "Office Manager",
-  //           "London",
-  //           "3814",
-  //           "2008\/12\/19",
-  //           "$90,560"
-  //       ],
-  //       [
-  //           "Quinn Flynn",
-  //           "Support Lead",
-  //           "Edinburgh",
-  //           "9497",
-  //           "2013\/03\/03",
-  //           "$342,000"
-  //       ],
-  //       [
-  //           "Charde Marshall",
-  //           "Regional Director",
-  //           "San Francisco",
-  //           "6741",
-  //           "2008\/10\/16",
-  //           "$470,600"
-  //       ],
-  //       [
-  //           "Haley Kennedy",
-  //           "Senior Marketing Designer",
-  //           "London",
-  //           "3597",
-  //           "2012\/12\/18",
-  //           "$313,500"
-  //       ],
-  //       [
-  //           "Tatyana Fitzpatrick",
-  //           "Regional Director",
-  //           "London",
-  //           "1965",
-  //           "2010\/03\/17",
-  //           "$385,750"
-  //       ],
-  //       [
-  //           "Michael Silva",
-  //           "Marketing Designer",
-  //           "London",
-  //           "1581",
-  //           "2012\/11\/27",
-  //           "$198,500"
-  //       ],
-  //       [
-  //           "Paul Byrd",
-  //           "Chief Financial Officer (CFO)",
-  //           "New York",
-  //           "3059",
-  //           "2010\/06\/09",
-  //           "$725,000"
-  //       ],
-  //       [
-  //           "Gloria Little",
-  //           "Systems Administrator",
-  //           "New York",
-  //           "1721",
-  //           "2009\/04\/10",
-  //           "$237,500"
-  //       ],
-  //       [
-  //           "Bradley Greer",
-  //           "Software Engineer",
-  //           "London",
-  //           "2558",
-  //           "2012\/10\/13",
-  //           "$132,000"
-  //       ],
-  //       [
-  //           "Dai Rios",
-  //           "Personnel Lead",
-  //           "Edinburgh",
-  //           "2290",
-  //           "2012\/09\/26",
-  //           "$217,500"
-  //       ],
-  //       [
-  //           "Jenette Caldwell",
-  //           "Development Lead",
-  //           "New York",
-  //           "1937",
-  //           "2011\/09\/03",
-  //           "$345,000"
-  //       ],
-  //       [
-  //           "Yuri Berry",
-  //           "Chief Marketing Officer (CMO)",
-  //           "New York",
-  //           "6154",
-  //           "2009\/06\/25",
-  //           "$675,000"
-  //       ],
-  //       [
-  //           "Caesar Vance",
-  //           "Pre-Sales Support",
-  //           "New York",
-  //           "8330",
-  //           "2011\/12\/12",
-  //           "$106,450"
-  //       ],
-  //       [
-  //           "Doris Wilder",
-  //           "Sales Assistant",
-  //           "Sidney",
-  //           "3023",
-  //           "2010\/09\/20",
-  //           "$85,600"
-  //       ],
-  //       [
-  //           "Angelica Ramos",
-  //           "Chief Executive Officer (CEO)",
-  //           "London",
-  //           "5797",
-  //           "2009\/10\/09",
-  //           "$1,200,000"
-  //       ],
-  //       [
-  //           "Gavin Joyce",
-  //           "Developer",
-  //           "Edinburgh",
-  //           "8822",
-  //           "2010\/12\/22",
-  //           "$92,575"
-  //       ],
-  //       [
-  //           "Jennifer Chang",
-  //           "Regional Director",
-  //           "Singapore",
-  //           "9239",
-  //           "2010\/11\/14",
-  //           "$357,650"
-  //       ],
-  //       [
-  //           "Brenden Wagner",
-  //           "Software Engineer",
-  //           "San Francisco",
-  //           "1314",
-  //           "2011\/06\/07",
-  //           "$206,850"
-  //       ],
-  //       [
-  //           "Fiona Green",
-  //           "Chief Operating Officer (COO)",
-  //           "San Francisco",
-  //           "2947",
-  //           "2010\/03\/11",
-  //           "$850,000"
-  //       ],
-  //       [
-  //           "Shou Itou",
-  //           "Regional Marketing",
-  //           "Tokyo",
-  //           "8899",
-  //           "2011\/08\/14",
-  //           "$163,000"
-  //       ],
-  //       [
-  //           "Michelle House",
-  //           "Integration Specialist",
-  //           "Sidney",
-  //           "2769",
-  //           "2011\/06\/02",
-  //           "$95,400"
-  //       ],
-  //       [
-  //           "Suki Burks",
-  //           "Developer",
-  //           "London",
-  //           "6832",
-  //           "2009\/10\/22",
-  //           "$114,500"
-  //       ],
-  //       [
-  //           "Prescott Bartlett",
-  //           "Technical Author",
-  //           "London",
-  //           "3606",
-  //           "2011\/05\/07",
-  //           "$145,000"
-  //       ],
-  //       [
-  //           "Gavin Cortez",
-  //           "Team Leader",
-  //           "San Francisco",
-  //           "2860",
-  //           "2008\/10\/26",
-  //           "$235,500"
-  //       ],
-  //       [
-  //           "Martena Mccray",
-  //           "Post-Sales support",
-  //           "Edinburgh",
-  //           "8240",
-  //           "2011\/03\/09",
-  //           "$324,050"
-  //       ],
-  //       [
-  //           "Unity Butler",
-  //           "Marketing Designer",
-  //           "San Francisco",
-  //           "5384",
-  //           "2009\/12\/09",
-  //           "$85,675"
-  //       ],
-  //       [
-  //           "Howard Hatfield",
-  //           "Office Manager",
-  //           "San Francisco",
-  //           "7031",
-  //           "2008\/12\/16",
-  //           "$164,500"
-  //       ],
-  //       [
-  //           "Hope Fuentes",
-  //           "Secretary",
-  //           "San Francisco",
-  //           "6318",
-  //           "2010\/02\/12",
-  //           "$109,850"
-  //       ],
-  //       [
-  //           "Vivian Harrell",
-  //           "Financial Controller",
-  //           "San Francisco",
-  //           "9422",
-  //           "2009\/02\/14",
-  //           "$452,500"
-  //       ],
-  //       [
-  //           "Timothy Mooney",
-  //           "Office Manager",
-  //           "London",
-  //           "7580",
-  //           "2008\/12\/11",
-  //           "$136,200"
-  //       ],
-  //       [
-  //           "Jackson Bradshaw",
-  //           "Director",
-  //           "New York",
-  //           "1042",
-  //           "2008\/09\/26",
-  //           "$645,750"
-  //       ],
-  //       [
-  //           "Olivia Liang",
-  //           "Support Engineer",
-  //           "Singapore",
-  //           "2120",
-  //           "2011\/02\/03",
-  //           "$234,500"
-  //       ],
-  //       [
-  //           "Bruno Nash",
-  //           "Software Engineer",
-  //           "London",
-  //           "6222",
-  //           "2011\/05\/03",
-  //           "$163,500"
-  //       ],
-  //       [
-  //           "Sakura Yamamoto",
-  //           "Support Engineer",
-  //           "Tokyo",
-  //           "9383",
-  //           "2009\/08\/19",
-  //           "$139,575"
-  //       ],
-  //       [
-  //           "Thor Walton",
-  //           "Developer",
-  //           "New York",
-  //           "8327",
-  //           "2013\/08\/11",
-  //           "$98,540"
-  //       ],
-  //       [
-  //           "Finn Camacho",
-  //           "Support Engineer",
-  //           "San Francisco",
-  //           "2927",
-  //           "2009\/07\/07",
-  //           "$87,500"
-  //       ],
-  //       [
-  //           "Serge Baldwin",
-  //           "Data Coordinator",
-  //           "Singapore",
-  //           "8352",
-  //           "2012\/04\/09",
-  //           "$138,575"
-  //       ],
-  //       [
-  //           "Zenaida Frank",
-  //           "Software Engineer",
-  //           "New York",
-  //           "7439",
-  //           "2010\/01\/04",
-  //           "$125,250"
-  //       ],
-  //       [
-  //           "Zorita Serrano",
-  //           "Software Engineer",
-  //           "San Francisco",
-  //           "4389",
-  //           "2012\/06\/01",
-  //           "$115,000"
-  //       ],
-  //       [
-  //           "Jennifer Acosta",
-  //           "Junior Javascript Developer",
-  //           "Edinburgh",
-  //           "3431",
-  //           "2013\/02\/01",
-  //           "$75,650"
-  //       ],
-  //       [
-  //           "Cara Stevens",
-  //           "Sales Assistant",
-  //           "New York",
-  //           "3990",
-  //           "2011\/12\/06",
-  //           "$145,600"
-  //       ],
-  //       [
-  //           "Hermione Butler",
-  //           "Regional Director",
-  //           "London",
-  //           "1016",
-  //           "2011\/03\/21",
-  //           "$356,250"
-  //       ],
-  //       [
-  //           "Lael Greer",
-  //           "Systems Administrator",
-  //           "London",
-  //           "6733",
-  //           "2009\/02\/27",
-  //           "$103,500"
-  //       ],
-  //       [
-  //           "Jonas Alexander",
-  //           "Developer",
-  //           "San Francisco",
-  //           "8196",
-  //           "2010\/07\/14",
-  //           "$86,500"
-  //       ],
-  //       [
-  //           "Shad Decker",
-  //           "Regional Director",
-  //           "Edinburgh",
-  //           "6373",
-  //           "2008\/11\/13",
-  //           "$183,000"
-  //       ],
-  //       [
-  //           "Michael Bruce",
-  //           "Javascript Developer",
-  //           "Singapore",
-  //           "5384",
-  //           "2011\/06\/27",
-  //           "$183,000"
-  //       ],
-  //       [
-  //           "Donna Snider",
-  //           "Customer Support",
-  //           "New York",
-  //           "4226",
-  //           "2011\/01\/25",
-  //           "$112,000"
-  //       ]
-  //   ]
+      $scope.darkTheme = true;
+     var themesheet = $('<link href="https://bootswatch.com/3/slate/bootstrap.min.css" rel="stylesheet" />');
+            themesheet.appendTo('head');
+
+        $scope.themeSwitcher=function(){
+        	    if($scope.darkTheme){
+                themesheet.attr('href',"https://bootswatch.com/3/spacelab/bootstrap.min.css");
+                	$scope.darkTheme = false;
+        //		$(".themeButton").html("Dark Theme");
+                		} else {
+
+        			themesheet.attr('href',"https://bootswatch.com/3/slate/bootstrap.min.css");
+              	$scope.darkTheme = true;
+        	//		$(".themeButton").html("Light Theme");
+        		}
+          }
+
+//World map js
+
+  $scope.worldMapGenerator = function(){
+    // var map = AmCharts.makeChart( "chartdiv", {
+    //
+    //     "type": "map",
+    //     //"theme": "black",
+    //     "theme": "dark",
+    //     "projection": "miller",
+    //
+    //     "dataProvider": {
+    //       "map": "worldLow",
+    //       "getAreasFromMap": true
+    //     },
+    //     "areasSettings": {
+    //       "autoZoom": true,
+    //       "selectedColor": "#ff7f0e"
+    //     },
+    //     "smallMap": {},
+    //     "export": {
+    //       "enabled": false,
+    //       "position": "bottom-right"
+    //     }
+    //   });
+
+    //new map
+
+    /**
+ * This example uses pulsating circles CSS by Kevin Urrutia
+ * http://kevinurrutia.tumblr.com/post/16411271583/creating-a-css3-pulsating-circle
+ */
+
+var map = AmCharts.makeChart( "chartdiv", {
+  "type": "map",
+  "theme": "dark",
+  "projection": "miller",
+
+  "imagesSettings": {
+     "rollOverColor": "#9fc6ec",
+    "rollOverScale": 3,
+    "selectedScale": 3,
+     "selectedColor": "#9fc6ec",
+     "color": "#9fc6ec"
+  },
+
+  "areasSettings": {
+    "unlistedAreasColor": "#9fc6ec"
+  },
+
+  "dataProvider": {
+    "map": "worldLow",
+    "images": [ {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Brussels",
+      "latitude": 50.8371,
+      "longitude": 4.3676
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Copenhagen",
+      "latitude": 55.6763,
+      "longitude": 12.5681
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Paris",
+      "latitude": 48.8567,
+      "longitude": 2.3510
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Reykjavik",
+      "latitude": 64.1353,
+      "longitude": -21.8952
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Moscow",
+      "latitude": 55.7558,
+      "longitude": 37.6176
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Madrid",
+      "latitude": 40.4167,
+      "longitude": -3.7033
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "London",
+      "latitude": 51.5002,
+      "longitude": -0.1262,
+      "url": "http://www.google.co.uk"
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Peking",
+      "latitude": 39.9056,
+      "longitude": 116.3958
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "New Delhi",
+      "latitude": 28.6353,
+      "longitude": 77.2250
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Tokyo",
+      "latitude": 35.6785,
+      "longitude": 139.6823,
+      "url": "http://www.google.co.jp"
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Ankara",
+      "latitude": 39.9439,
+      "longitude": 32.8560
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Buenos Aires",
+      "latitude": -34.6118,
+      "longitude": -58.4173
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Brasilia",
+      "latitude": -15.7801,
+      "longitude": -47.9292
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Ottawa",
+      "latitude": 45.4235,
+      "longitude": -75.6979
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Washington",
+      "latitude": 38.8921,
+      "longitude": -77.0241
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Kinshasa",
+      "latitude": -4.3369,
+      "longitude": 15.3271
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Cairo",
+      "latitude": 30.0571,
+      "longitude": 31.2272
+    }, {
+      "zoomLevel": 5,
+      "scale": 0.5,
+      "title": "Pretoria",
+      "latitude": -25.7463,
+      "longitude": 28.1876
+    } ]
+  }
+} );
+
+// add events to recalculate map position when the map is moved or zoomed
+map.addListener( "positionChanged", updateCustomMarkers );
+
+// this function will take current images on the map and create HTML elements for them
+function updateCustomMarkers( event ) {
+  // get map object
+  var map = event.chart;
+
+  // go through all of the images
+  for ( var x in map.dataProvider.images ) {
+    // get MapImage object
+    var image = map.dataProvider.images[ x ];
+
+    // check if it has corresponding HTML element
+    if ( 'undefined' == typeof image.externalElement )
+      image.externalElement = createCustomMarker( image );
+
+    // reposition the element accoridng to coordinates
+    var xy = map.coordinatesToStageXY( image.longitude, image.latitude );
+    image.externalElement.style.top = xy.y + 'px';
+    image.externalElement.style.left = xy.x + 'px';
+  }
+}
+
+// this function creates and returns a new marker element
+function createCustomMarker( image ) {
+  // create holder
+  var holder = document.createElement( 'div' );
+  holder.className = 'map-marker';
+  holder.title = image.title;
+  holder.style.position = 'absolute';
+
+  // maybe add a link to it?
+  if ( undefined != image.url ) {
+    holder.onclick = function() {
+      window.location.href = image.url;
+    };
+    holder.className += ' map-clickable';
+  }
+
+  // create dot
+  var dot = document.createElement( 'div' );
+  dot.className = 'dot';
+  holder.appendChild( dot );
+
+  // create pulse
+  var pulse = document.createElement( 'div' );
+  pulse.className = 'pulse';
+  holder.appendChild( pulse );
+
+  // append the marker to the map container
+  image.chart.chartDiv.appendChild( holder );
+
+  return holder;
+}
+
+  };
+
+});

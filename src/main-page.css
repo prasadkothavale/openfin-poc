@@ -1,17 +1,24 @@
 * {margin: 0; padding: 0;}
 
-.close {
+.closeApp {
   -webkit-app-region: no-drag;
   display: block;
   cursor: pointer;
   float: right;
-  font-size: 25px;
-  opacity: 0.5;
+  font-size: 30px;
+  opacity: 1;
+  color:#faa123;
+  margin: 7px;
 }
-.close:hover{
-opacity: 1;
+.closeApp:hover{
+opacity: 0.5;
 }
 
+/* .chart-1
+{
+  background-color:white !important;
+  font-color:black !important;
+} */
 .menu
 {
     width: 150px;
@@ -64,7 +71,7 @@ width: 100%;
 
 
 table tr th{
-  background:#337ab7;
+  background:#7a8288;
   color:white;
   text-align:left;
   vertical-align:center;

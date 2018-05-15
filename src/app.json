@@ -1,13 +1,15 @@
 {
   "devtools_port": 9090,
   "startup_app": {
-    "name": "OpenFin First App",
-    "description": "My first OpenFin app",
-    "url": "http://localhost:9070",
-    "uuid": "openfin-closing-events-demo",
+    "name": "OpenFin_Mark_2",
+    "description": "OpenFin POC",
+    "url": "https://aehe-openfin-poc.herokuapp.com",
+    "uuid": "openfin-poc-demo",
     "autoShow": true,
-	"frame": false,
-	"maximizable": false
+	"showTaskbarIcon": true,
+	"taskbarIcon": "C:/openfin_taskbar_icon.png",
+	"taskbarIconGroup":"OpenFin First App"
+	
   },
   "runtime": {
     "arguments": "",
@@ -15,7 +17,7 @@
   },
   "shortcut": {
     "company": "OpenFin",
-    "description": "OpenFin appseed",
-    "name": "OpenFin appseed"
+    "description": "OpenFin notifications Demo",
+    "name": "OpenFin notifications Demo"
   }
 }
