@@ -1,6 +1,6 @@
 function generateLink(redirect) {
     let protocol = window.location.protocol == 'https:' ? 'fins:' : 'fin:'
-    let deepLink = `${protocol}//${window.location.host}/app.json?\$\$redirect=${redirect}`
+    let deepLink = `${protocol}//${window.location.host}/app.json?\$\$${redirect}`
     setClipboardText(deepLink)
 }
 

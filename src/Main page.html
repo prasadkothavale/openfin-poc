@@ -54,6 +54,15 @@
 
 
         <link rel="Stylesheet" type="text/css" href="login-form.css"/>
+		
+		<!--<script>
+		  // DeepLink redirect
+		  var search = window.location.search;
+		  if(search != undefined && search != null && search != "" && search.search("=") > 0) {
+			   alert(search.substring(search.indexOf('=')+1));
+			   window.location = search.substring(search.indexOf('=')+1);
+		  }
+		</script>-->
 
       </head>
 
@@ -366,7 +375,7 @@
 
                     // Deep Linking
                     function createDeepLink() {
-                      var redirect = `./Main page.html?page=${activePage}`;
+                      var redirect = `page=${activePage}`;
                       generateLink(redirect);
                     }
             </script>
