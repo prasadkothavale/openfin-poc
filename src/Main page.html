@@ -10,11 +10,47 @@
         <link rel="stylesheet" href="main-page.css">
         <link rel="stylesheet" href="dashboardCss.css">
         <link rel="stylesheet" href="Horizontal-BarChart.css">
-		
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+        <script src="https://d3js.org/d3.v4.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
+        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/zingchart-angularjs/1.2.0/zingchart-angularjs.min.js"></script>
+        <script src ="js/MainPageController.js"></script>
+        <script src ="js/Horizontal-BarChart.js"></script>
+
+        <!--modal links-->
+        <!-- <script src="js/angular-ui-bootstrap-modal.js"></script> -->
+        <script src="js/ui-bootstrap-tpls-0.12.1.min.js"></script>
+        <!-- end of modal-->
+
+        <!-- Area chart dependencies -->
+        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-		
+        <!-- <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script> -->
+        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
+
+        <!-- Pie chart section -->
+        <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+        <!-- world map section -->
+        <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
+        <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
+        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
         <link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css" type="text/css" media="all" />
-        
+        <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
 
 
         <link rel="Stylesheet" type="text/css" href="login-form.css"/>
@@ -212,7 +248,7 @@
                                                       </thead>
                                                         <tbody>
                                                             <tr ng-repeat="n in data">
-                                                          <td style="text-align: right"><input type="checkbox" ng-init="chartShowHide($index,showChart,n) "  ng-click="addValues($index,showChart,n)"  ng-model="showChart" ng-checked="true"></input></td>
+                                                          <td style="text-align: right"><input type="checkbox" ng-init="chartShowHide($index,showChart,n)"  ng-click="addValues($index,showChart,n)"  ng-model="showChart" ng-checked="true"></input></td>
                                                             <td>{{n.name}}</td>
                                                             <td><button class="btn btn-link" ng-click="openStockDetails(n.query)">{{n.symbol}}</a></td>
                                                             <td>{{n.isin}}</td>
@@ -275,46 +311,7 @@
 
 
 <!-- New allignment end -->
-			<script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-        <script src="https://d3js.org/d3.v4.min.js"></script>
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-        <!--<script src="https://code.jquery.com/jquery-1.12.4.js"></script>-->
-        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap.min.js"></script>
-        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-utils/0.1.1/angular-ui-utils.min.js"></script>
-        <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/zingchart-angularjs/1.2.0/zingchart-angularjs.min.js"></script>
-		
-		<script src="https://angular-ui.github.io/bootstrap/versioned-docs/0.12.1/ui-bootstrap-tpls-0.12.1.min.js"></script>
-        <script src ="./js/MainPageController.js"></script>
-        <script src ="./js/Horizontal-BarChart.js"></script>
 
-        <!--modal links-->
-        <!-- <script src="js/angular-ui-bootstrap-modal.js"></script> -->
-        
-        <!-- end of modal-->
-
-        <!-- Area chart dependencies -->
-        <script src="https://www.amcharts.com/lib/3/amcharts.js"></script>
-        <script src="https://www.amcharts.com/lib/3/serial.js"></script>
-        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-        <!-- <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script> -->
-        <script src="https://www.amcharts.com/lib/3/themes/light.js"></script>
-
-        <!-- Pie chart section -->
-        <!--<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>-->
-        <script src="https://code.highcharts.com/highcharts.js"></script>
-        <script src="https://code.highcharts.com/modules/exporting.js"></script>
-        <script src="https://code.highcharts.com/modules/export-data.js"></script>
-
-        <!-- world map section -->
-        <script src="https://www.amcharts.com/lib/3/ammap.js"></script>
-        <script src="https://www.amcharts.com/lib/3/maps/js/worldLow.js"></script>
-        <script src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
-        <script src="https://www.amcharts.com/lib/3/themes/dark.js"></script>
 
             <script src="./js/newWindow.js"></script>
             <script src="./js/DeepLink.js"></script>

@@ -51,16 +51,274 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance, items) {
 //end of modal Logic
 
 app.controller('MainController', function($rootScope,$scope,$http){
-  var request = {
+ /* var request = {
                   method: 'get',
                   url: 'sample.json',
                   dataType: 'json',
                   contentType: "application/json"
               };
+			  */
 
-              $scope.arrTest = new Array;
+             // $scope.arrTest = new Array;
+			  $rootScope.data = [
 
-              $http(request)
+    {
+        "name":"PayPal Holdings Inc",
+        "symbol": "PYPL",
+        "isin": "US70450Y1038",
+
+
+        "price": 74.67,
+
+        "query": "NASDAQ:+PYPL"
+    },
+	{
+        "name":"Marriott International Inc",
+        "symbol": "MAR",
+        "isin": "US5719032022",
+
+
+        "price": 136.64,
+
+        "query": "NASDAQ:+MAR"
+    },
+    {
+        "name":"Citrix Systems Inc",
+        "symbol": "CTXS",
+        "isin": "US1773761002",
+
+
+        "price": 106.58,
+
+        "query": "NASDAQ:+CTXS"
+    },
+	{
+        "name":"Accenture Plc",
+        "symbol": "ACN",
+        "isin": "IE00B4BNMY34",
+
+
+        "price": 153.44,
+
+        "query": "NASDAQ:+ACN"
+    },
+
+{
+        "name":"Microsoft Corporation",
+        "symbol": "MSFT",
+        "isin": "US5949181045",
+
+
+        "price": 95.16,
+
+        "query": "NASDAQ:+MSFT"
+    },
+    {
+        "name":"Aplhabet Inc",
+        "symbol": "GOOG",
+        "isin": "US02079K3059",
+
+
+        "price": 1048.21,
+
+        "query": "NASDAQ:+GOOG"
+    },
+    {
+        "name":"Facebook Inc",
+        "symbol": "FB",
+        "isin": "US30303M1027",
+
+
+        "price": 176.61,
+
+        "query": "NASDAQ:+FB"
+    },
+    {
+        "name":"Intel Corporation",
+        "symbol": "INTL",
+        "isin": "US4581401001",
+
+
+        "price": 58.21,
+
+        "query": "NASDAQ:+INTL"
+    },
+
+    {
+        "name":"AT&T Inc",
+        "symbol": "T",
+        "isin": "US00206R1023",
+
+
+        "price": 32.14,
+
+        "query": "NASDAQ:+T"
+    },
+    {
+        "name":"Apple Inc",
+        "symbol": "AAPL",
+        "isin": "US0378331005",
+
+
+        "price": 183.83,
+
+        "query": "NASDAQ:+AAPL"
+    },
+    {
+        "name":"Adobe Systems Inc",
+        "symbol": "ADBE",
+        "isin": "US00724F1012",
+
+
+        "price": 230.99,
+
+        "query": "NASDAQ:+ADBE"
+    },
+    {
+        "name":"Amazon.com Inc",
+        "symbol": "AMZN",
+        "isin": "US0231351067",
+
+
+        "price": 1600.14,
+
+        "query": "NASDAQ:+AMZN"
+    },
+    {
+        "name":"Cisco Systems Inc",
+        "symbol": "CSCO",
+        "isin": "US17275R1023",
+
+
+        "price": 45.73,
+
+        "query": "NASDAQ:+CSCO"
+    },
+    {
+        "name":"eBay Inc",
+        "symbol": "EBAY",
+        "isin": "US2786421030",
+
+
+        "price": 37.80,
+
+        "query": "NASDAQ:+EBAY"
+    },
+    {
+        "name":"Fiserv Inc",
+        "symbol": "FISV",
+        "isin": "US3377381088",
+
+
+        "price": 70.41,
+
+        "query": "NASDAQ:+FISV"
+    },
+
+    {
+        "name":"Symantec Corp",
+        "symbol": "SYMC",
+        "isin": "US8715031089",
+
+
+        "price": 28.44,
+
+        "query": "NASDAQ:+SYMC"
+    },
+    {
+        "name":"Viacom Inc",
+        "symbol": "VIAB",
+        "isin": "US92553P2011",
+
+
+        "price": 30.70,
+
+        "query": "NASDAQ:+VIAB"
+    },
+    {
+        "name":"Tesla Inc",
+        "symbol": "TSLA",
+        "isin": "US88160R1014",
+
+
+        "price": 302.77,
+
+        "query": "NASDAQ:+TSLA"
+    },
+    {
+        "name":"Vodafone Group PLC",
+        "symbol": "VOD",
+        "isin": "GB00BH4HKS39",
+
+
+        "price": 28.84,
+
+        "query": "NASDAQ:+VOD"
+    },
+    {
+        "name":"Vertex Pharmaceuticals Inc",
+        "symbol": "VRTX",
+        "isin": "US92532F1003",
+
+
+        "price": 149.50,
+
+        "query": "NASDAQ:+VRTX"
+    },
+    {
+        "name":"Texas Intruments Inc",
+        "symbol": "TXN",
+        "isin": "US8825081040",
+
+
+        "price": 105.51,
+
+        "query": "NASDAQ:+TXN"
+    },
+
+    {
+        "name":"Mattel Inc",
+        "symbol": "MAT",
+        "isin": "US5770811025",
+
+
+        "price": 14.47,
+
+        "query": "NASDAQ:+MAT"
+    },
+    {
+        "name":"Qualcomm Inc",
+        "symbol": "QCOM",
+        "isin": "US7475251036",
+
+
+        "price": 53.01,
+
+        "query": "NASDAQ:+QCOM"
+    },
+    {
+        "name":"Skyworks Solutions Inc",
+        "symbol": "SWKS",
+        "isin": "US83088M1027",
+
+
+        "price": 95.34,
+
+        "query": "NASDAQ:+SWKS"
+    },
+    {
+        "name":"Starbuck SOlutions Inc",
+        "symbol": "SBUX",
+        "isin": "US8552441094",
+
+
+        "price": 57.45,
+
+        "query": "NASDAQ:+SBUX"
+    }];
+
+
+              /*$http(request)
                   .then(function (jsonData) {
                       $scope.arrTest = jsonData.data || [];
                       $rootScope.data = $scope.arrTest;
@@ -68,10 +326,12 @@ app.controller('MainController', function($rootScope,$scope,$http){
                   }
                   ,function (error) {
                  console.log("error")
-                  });
+                  });*/
 
   $scope.dataTableOpt = {
-    "aLengthMenu": [[5, 50, 100,-1], [5,10, 50, 100,'All']],
+	  "pagingType": "full_numbers",
+	  "paging": true,
+    "lengthMenu": [[5, 50, 100,-1], [5,10, 50, 100,'All']],
     };
 
     $scope.openStockDetails = function(query) {
@@ -117,7 +377,7 @@ app.controller('MainController', function($rootScope,$scope,$http){
     }//else end
     }//add values end
 
-    $scope.chartShowHide = function(index,check)
+    $scope.chartShowHide = function(index,checked)
     {
      for(var i=0;i<=index ; i++)
      {
@@ -166,6 +426,8 @@ app.controller('MainController', function($rootScope,$scope,$http){
                 };
 
     }//end of showhide chart function
+	
+	//$scope.showChart = true;
 
     ///// Line chart function
     $scope.lineChartGenerator = function(){
