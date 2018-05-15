@@ -246,9 +246,9 @@
                                                           <!-- <th></th> -->
                                                           </tr>
                                                       </thead>
-                                                        <tbody>
-                                                            <tr ng-repeat="n in data">
-                                                          <td style="text-align: right"><input type="checkbox" ng-init="chartShowHide($index,showChart,n)"  ng-click="addValues($index,showChart,n)"  ng-model="showChart" ng-checked="true"></input></td>
+                                                        <tbody ng-init="chartShowHide()">
+                                                            <tr ng-repeat="n in data"  >
+                                                          <td style="text-align: right"><input type="checkbox" ng-click="addValues($index,showChart,n)"  ng-model="showChart" ng-checked="true"></input></td>
                                                             <td>{{n.name}}</td>
                                                             <td><button class="btn btn-link" ng-click="openStockDetails(n.query)">{{n.symbol}}</a></td>
                                                             <td>{{n.isin}}</td>

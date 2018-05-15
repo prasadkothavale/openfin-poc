@@ -377,19 +377,19 @@ app.controller('MainController', function($rootScope,$scope,$http){
     }//else end
     }//add values end
 
-    $scope.chartShowHide = function(index,checked)
+    $scope.chartShowHide = function()
     {
-     for(var i=0;i<=index ; i++)
+     for(var i=0;i<=4 ; i++)
      {
-       if(chartArrayStock.indexOf($rootScope.data[i].symbol) == -1 && index < 5)
+       if(chartArrayStock.indexOf($rootScope.data[i].symbol) == -1)
       {
         chartArrayStock.push($rootScope.data[i].symbol);
       console.log("chartArrayStock init:"+chartArrayStock[i]);}//end if
      }//end for
 
-      for(var i=0;i<=index ; i++)
+      for(var i=0;i<=4 ; i++)
      {
-        if(chartArrayPrice.indexOf($rootScope.data[i].price) == -1 && index < 5)
+        if(chartArrayPrice.indexOf($rootScope.data[i].price) == -1 )
       { chartArrayPrice.push($rootScope.data[i].price);
         console.log("chartArrayPrice init:"+chartArrayPrice[i]);
       }
@@ -421,13 +421,11 @@ app.controller('MainController', function($rootScope,$scope,$http){
             }
           ]
         };//chart json end
-        $scope.myRender = {
-                  defaults:  {}
-                };
+  
 
     }//end of showhide chart function
-	
-	//$scope.showChart = true;
+
+	$scope.addValues(4,true);
 
     ///// Line chart function
     $scope.lineChartGenerator = function(){
