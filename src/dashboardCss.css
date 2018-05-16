@@ -348,7 +348,7 @@ fill:#777777 !important;
 
 
 #chart-1-license-text a{
-  display:none;
+  display:none !important;
 }
 
 
