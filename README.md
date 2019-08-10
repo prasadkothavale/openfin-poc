@@ -5,7 +5,7 @@ Follow one of the two options `Deploying to Heroku` or `Running Locally` to run 
 
 ## 1. Deploying to Heroku
 
-Application is deployed at https://open-fin-deep-linking-example.herokuapp.com/ you can use existing or deploy new.
+Application is deployed at https://aehe-openfin-poc.herokuapp.com/ you can use existing or deploy new.
 
 Make sure you have [Heroku CLI](https://cli.heroku.com/) installed
 
@@ -18,11 +18,11 @@ or
 
 [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
 
-### Run it in OpenFin
+### Run it in OpenFin (One time, it should create desktop icon for later runs)
 
 ```sh
 $ npm install -g openfin-cli
-$ openfin --launch --config https://open-fin-deep-linking-example.herokuapp.com/app.json
+$ openfin --launch --config https://aehe-openfin-poc.herokuapp.com/app.json
 ```
 
 ## 2. Running Locally
